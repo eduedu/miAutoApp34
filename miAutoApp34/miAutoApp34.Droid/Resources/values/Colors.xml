@@ -1,0 +1,15 @@
+﻿<resources>
+  <color name="window_background">#FFF5F5F5</color>
+  <color name="cellback">#FFFFFF</color>
+  <color name="colAzul">#3e61ad</color>
+  <color name="colSalmon">#f05059</color>
+  <color name="colRosado">#f5968d</color>
+  <color name="colNegro">#010101</color>
+  <color name="colGris1">#4d4d4d</color>
+  <color name="colGris2">#6d6e70</color>
+  <color name="colGris3">#989898</color>
+  <color name="colGris4">#dedddd</color>
+  <color name="colBlanco">#ffffff</color>
+  <color name="colAmarillo">#faa41b</color>
+  
+</resources>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hola</string>
+	<string name="app_name">miAutoApp34</string>
+  <string name="condiciones">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis quam purus, at molestie risus dictum et. Quisque ultricies magna eget justo mollis, sit amet vestibulum ex iaculis. Nullam sagittis, nisl id cursus semper, erat enim rhoncus velit, ut euismod odio ex nec orci. In vitae urna id nisl ultricies gravida. Vivamus eu aliquet erat. Curabitur vitae tellus vitae justo efficitur bibendum non vitae velit. Integer id velit ac mi ullamcorper vestibulum. Morbi nunc quam, volutpat sed ex eget, aliquet pharetra odio. Mauris quis neque viverra augue mattis mollis.
+
+    Sed non arcu luctus, imperdiet nunc sit amet, vehicula felis. Quisque sed mauris lacus. Suspendisse erat orci, vulputate volutpat fringilla sit amet, tempor porttitor magna. Integer dolor nisl, semper at cursus a, vulputate quis ex. Phasellus congue sapien eu ante viverra, a faucibus erat egestas. Nulla ut massa non felis pretium scelerisque ut mollis enim. Curabitur facilisis, tellus non condimentum faucibus, lectus tellus faucibus mauris, in malesuada libero tortor non sapien. Aliquam sit amet elit ipsum. Integer nisl tellus, venenatis eget magna vel, convallis gravida lectus. Pellentesque sapien ex, consectetur id consectetur a, tempus in leo. Sed finibus euismod diam, quis sodales risus venenatis eu. Etiam ornare quam vitae arcu accumsan, ut sagittis dui porttitor. In pulvinar suscipit justo, vitae consectetur urna lacinia eget. Vestibulum cursus est at ex facilisis, id faucibus enim volutpat.
+  </string>
+  <string name="facebook_app_id">524916321042945</string>
+</resources>

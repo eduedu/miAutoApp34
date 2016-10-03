@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colBlanco">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/colAzul"
+        android:id="@+id/btnVolver">
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/space1"
+            android:layout_marginRight="0.0dp" />
+        <ImageView
+            android:layout_width="45.5dp"
+            android:layout_height="35.5dp"
+            android:background="#0000"
+            android:src="@drawable/iconoflechaatras"
+            android:id="@+id/btnFlecha"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:id="@+id/space1" />
+        <TextView
+            android:id="@+id/twvolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:background="#0000"
+            android:text="Volver"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+    </LinearLayout>
+    <TextView
+        android:text="Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/twtitulo"
+        android:textColor="@color/colAzul"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:layout_marginTop="5dp" />
+<!--<Macaw.UIComponents.MultiImageView
+        android:layout_width="fill_parent"
+        android:layout_height="242.5dp"
+        android:id="@+id/carrousel"
+        android:layout_marginBottom="0.0dp" />-->
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:gravity="bottom">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_centerInParent="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/linearCirculos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:clickable="true"
+                android:src="@drawable/circuloimagenselec"
+                android:id="@+id/circulo1"
+                android:layout_gravity="center"
+                android:layout_margin="5dp" />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:clickable="true"
+                android:src="@drawable/circuloimagennoselec"
+                android:id="@+id/circulo2"
+                android:layout_margin="5dp" />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:clickable="true"
+                android:src="@drawable/circuloimagennoselec"
+                android:id="@+id/circulo3"
+                android:layout_margin="5dp" />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:clickable="true"
+                android:src="@drawable/circuloimagennoselec"
+                android:id="@+id/circulo4"
+                android:layout_margin="5dp" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp">
+        <TextView
+            android:id="@+id/twpreciolabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="Precio final   "
+            android:textColor="@color/colAzul"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/twprecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="12345"
+            android:textColor="@color/colAzul"
+            android:textSize="18dp" />
+    </LinearLayout>
+    <ImageView
+        android:src="@color/colGris3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/separador"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+        <TextView
+            android:text="@string/condiciones"
+            android:layout_width="match_parent"
+            android:layout_height="164.5dp"
+            android:id="@+id/twdescripcion"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colGris1"
+            android:textSize="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="60dp"
+            android:scrollbars="vertical"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:maxLines="10" />
+        <Button
+            android:text="QUIERO ESTE AUTO"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btnQuieroEsteAuto"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/botonazulconsombra"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp" />
+    </RelativeLayout>
+<!-- <frgment
+        class="miAutoApp34.Droid.fCuenta"
+        android:id="@+id/frag1"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+        -->
+</LinearLayout>

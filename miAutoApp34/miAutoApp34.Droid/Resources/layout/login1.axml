@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:p2="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg01"
+    android:id="@+id/linearLayout1"
+    android:gravity="center">
+    <ImageView
+        android:src="@drawable/logo1"
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="173.0dp"
+        android:layout_marginBottom="0.0dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:id="@+id/space2" />
+    <ImageButton
+        android:id="@+id/btnFacebook"
+        android:layout_width="298dp"
+        android:layout_height="57dp"
+        android:clickable="true"
+        android:background="@drawable/botonfb" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/space3" />
+    <TextView
+        android:text="O CON SU NÚMERO DE TELÉFONO"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView1"
+        android:textColor="#6d6e70"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="17dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:id="@+id/space3" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="285dp"
+        android:layout_height="44dp"
+        android:id="@+id/editText1"
+        android:textColor="#4d4d4d"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="0.0dp"
+        android:textSize="25dp"
+        android:hint="Número de teléfono"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:textColorHint="#989898"
+        android:background="@drawable/renglon" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="285dp"
+        android:layout_height="44dp"
+        android:id="@+id/editText2"
+        android:textColor="#4d4d4d"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="0.0dp"
+        android:textSize="25dp"
+        android:hint="Contraseña"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:textColorHint="#989898"
+        android:background="@drawable/renglon" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:id="@+id/space3" />
+    <RelativeLayout
+        android:layout_width="290.0dp"
+        android:layout_height="45dp"
+        android:id="@+id/Layout2">
+        <Button
+            android:id="@+id/btnRegistrarse"
+            android:text="REGISTRARSE"
+            android:layout_width="120dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="match_parent"
+            android:background="@drawable/btnloginazul"
+            android:textColor="#FFFFFF"
+            android:clickable="true" />
+        <Button
+            android:id="@+id/btnIngresar"
+            android:text="INGRESAR"
+            android:clickable="true"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btnloginazul" />
+    </RelativeLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:id="@+id/space1" />
+    <Button
+        android:id="@+id/btnOlvidoContrasena"
+        android:text="¿Olvidó la contraseña?"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#00FFFFFF"
+        android:textColor="#989898"
+        android:textSize="17dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:id="@+id/space1" />
+</LinearLayout>

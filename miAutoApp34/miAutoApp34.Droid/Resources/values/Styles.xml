@@ -1,0 +1,39 @@
+﻿<resources>
+  <style name="animacionesDialog">
+    <item name="android:windowEnterAnimation">@anim/anima1</item>
+    <item name="android:windowExitAnimation">@anim/anima2</item>
+  </style>
+  <style name="animacionesRefe">
+    <item name="android:windowEnterAnimation">@anim/anima3</item>
+    <item name="android:windowExitAnimation">@anim/anima4</item>
+  </style>
+  <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
+  </style>
+
+  <style name="Theme.DesignDemo2" parent="Base.Theme.DesignDemo2">
+  </style>
+
+  <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">#3e61ad</item>
+    <item name="colorPrimaryDark">#3e61ad</item>
+    <item name="colorAccent">#f05059</item>
+  </style>
+  <style name="Base.Theme.DesignDemo2" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">#4d4d4d</item>
+    <item name="colorPrimaryDark">#4d4d4d</item>
+    <item name="colorAccent">#faa41b</item>
+  </style>
+ 
+  <style name="Theme.DesignDemo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="Theme.DesignDemo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    
+ <!--
+  <style name="RobotoBlack">
+    <item name="app:flFont">robo-black</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+ -->
+</resources>

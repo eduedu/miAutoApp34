@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dp"
+    android:background="#4d4d4d">
+    <TextView
+        android:text="Solicitud Registrada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:textColor="#FFFFFF"
+        android:textSize="19dp" />
+    <TextView
+        android:text="Un asesor se comunicará con usted en las próximas horas."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|left"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:text="3794"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textNumeroWA"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+        <LinearLayout
+            android:id="@+id/btnCopiarNumero"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="35.0dp"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:paddingRight="5dp"
+            android:background="@color/colGris2">
+            <ImageView
+                android:src="@drawable/iconocopiar"
+                android:layout_width="45.5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView1"
+                android:layout_marginRight="0.0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+            <TextView
+                android:id="@+id/textViewWA"
+                android:text="Copiar Número"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dp"
+                android:textColor="@color/colBlanco"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/space1" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal">
+        <LinearLayout
+            android:id="@+id/linearWhatsapp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45.0dp"
+            android:gravity="center"
+            android:background="#128C7E"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true">
+            <ImageView
+                android:src="@drawable/iconowhatsapp2"
+                android:layout_width="45.5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView1"
+                android:layout_marginRight="0.0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+            <TextView
+                android:id="@+id/textViewWA"
+                android:text="WhatsApp"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dp"
+                android:textColor="#FFFFFF"
+                android:gravity="center" />
+        </LinearLayout>
+        <Button
+            android:text="Ok"
+            android:layout_width="match_parent"
+            android:layout_height="45.0dp"
+            android:id="@+id/btnOK"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnloginazul"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
+</LinearLayout>

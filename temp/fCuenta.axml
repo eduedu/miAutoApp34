@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#FFFFFF">
+    <ImageView
+        android:src="@drawable/autos03"
+        android:layout_width="385dp"
+        android:layout_height="203.5dp"
+        android:id="@+id/imageView1" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15.0dp"
+        android:id="@+id/space3" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:weightSum="16"
+        android:gravity="center">
+        <Space
+            android:layout_height="match_parent"
+            android:id="@+id/space4"
+            android:layout_width="10dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout3"
+            android:gravity="center"
+            android:layout_width="95dp">
+            <Button
+                android:text="Button"
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Space
+            android:layout_height="match_parent"
+            android:id="@+id/space4"
+            android:layout_width="10dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2"
+            android:layout_width="230dp"
+            android:gravity="center">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:id="@+id/space5" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="230dp"
+                android:layout_height="35.0dp"
+                android:id="@+id/linearLayout4"
+                android:weightSum="2">
+                <TextView
+                    android:text="VALOR LLAVE"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+                <TextView
+                    android:text="$ 2200"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView1"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+            </LinearLayout>
+            <Button
+                android:text="Conseguí más llaves"
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22.0dp"
+                android:id="@+id/space5" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="230dp"
+                android:layout_height="35.0dp"
+                android:id="@+id/linearLayout5"
+                android:weightSum="2">
+                <TextView
+                    android:text="SU AUTO"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+                <TextView
+                    android:text="Text"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView1"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+            </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22.0dp"
+                android:id="@+id/space5" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="230dp"
+                android:layout_height="35.0dp"
+                android:id="@+id/linearLayout6"
+                android:weightSum="2">
+                <TextView
+                    android:text="PROXIMO VENCIMIENTO"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+                <TextView
+                    android:text="Text"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView1"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+            </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22.0dp"
+                android:id="@+id/space5" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="230dp"
+                android:layout_height="35.0dp"
+                android:id="@+id/linearLayout7"
+                android:weightSum="2">
+                <TextView
+                    android:text="VALOR LLAVE"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center_vertical"
+                    android:layout_width="115dp" />
+                <TextView
+                    android:text="Text"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView1"
+                    android:gravity="fill_vertical"
+                    android:layout_width="115dp" />
+            </LinearLayout>
+            <Button
+                android:text="Solicitar vendedor"
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp" />
+        </LinearLayout>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:id="@+id/space4" />
+    </LinearLayout>
+</LinearLayout>

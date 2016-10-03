@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#FFFFFF"
+    android:gravity="center_horizontal">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btnFBCompartir"
+        android:gravity="left"
+        android:background="@drawable/btncompartir"
+        android:clickable="true"
+        android:paddingLeft="15dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+        <ImageView
+            android:src="@drawable/iconofacebook1"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1" />
+        <TextView
+            android:text="Etiquetar Amigos "
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:gravity="center_vertical"
+            android:textColor="#010101"
+            android:textSize="18dp"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btnFBMensaje"
+        android:gravity="left"
+        android:background="@drawable/btncompartir"
+        android:clickable="true"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+        <ImageView
+            android:src="@drawable/iconofacebook1"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1" />
+        <TextView
+            android:text="Mandar Mensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:gravity="center_vertical"
+            android:textColor="#010101"
+            android:textSize="18dp"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btnWhatsApp"
+        android:gravity="left"
+        android:background="@drawable/btncompartir"
+        android:clickable="true"
+        android:paddingLeft="15dp">
+        <ImageView
+            android:src="@drawable/iconowhatsapp1"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+        <TextView
+            android:text="WhatsApp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:gravity="center_vertical"
+            android:textColor="#010101"
+            android:textSize="18dp"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btnMail"
+        android:gravity="left"
+        android:background="@drawable/btncompartir"
+        android:clickable="true"
+        android:paddingLeft="15dp">
+        <ImageView
+            android:src="@drawable/iconomail1"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+        <TextView
+            android:text="Correo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:gravity="center_vertical"
+            android:textColor="#010101"
+            android:textSize="18dp"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btnSMS"
+        android:gravity="left"
+        android:background="@drawable/btncompartir"
+        android:clickable="true"
+        android:paddingLeft="15dp">
+        <ImageView
+            android:src="@drawable/iconosms1"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+        <TextView
+            android:text="SMS"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:gravity="center_vertical"
+            android:textColor="#010101"
+            android:textSize="18dp"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+</LinearLayout>

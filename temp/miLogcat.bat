@@ -1,0 +1,1 @@
+C:\android-sdk\platform-tools\adb logcat Corona:v *:s

@@ -1,0 +1,1 @@
+keytool -exportcert -alias educab -keystore "C:\Users\Eduardo\Google Drive\miautoapp34.keystore" | "C:\OpenSSL\bin\openssl" sha1 -binary |"C:\OpenSSL\bin\openssl" base64

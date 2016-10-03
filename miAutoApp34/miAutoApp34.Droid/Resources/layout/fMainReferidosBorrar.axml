@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#FF0FF0">
+    <Button
+        android:text="FACEBOOK"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/button3"
+        android:background="@drawable/btnlogingris"
+        android:textColor="#FFFFFF" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15.0dp"
+        android:id="@+id/space3" />
+    <ImageView
+        android:layout_width="41dp"
+        android:layout_height="47.5dp"
+        android:clickable="false"
+        android:background="#0000"
+        android:src="@drawable/llaveiconob"
+        android:id="@+id/imageView1"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="3dp" />
+    <Button
+        android:text="CONTACTOS"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/button4"
+        android:background="@drawable/btnlogingris"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

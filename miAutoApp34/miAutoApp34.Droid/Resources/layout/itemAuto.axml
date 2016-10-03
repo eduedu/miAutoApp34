@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
+        android:id="@+id/my_image_view" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/my_text_view"
+        android:background="#4D4D4D"
+        android:layout_alignBottom="@id/my_image_view"
+        android:alpha="0.5"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#3e61ad">
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <ImageView
+                android:layout_width="45.5dp"
+                android:layout_height="55.5dp"
+                android:clickable="false"
+                android:background="#0000"
+                android:src="@drawable/logobarra"
+                android:id="@+id/imageView1" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:background="#0000"
+                android:text="Registro"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <ImageView
+                android:layout_width="45.5dp"
+                android:layout_height="55.5dp"
+                android:clickable="false"
+                android:id="@+id/imageView1"
+                android:src="@drawable/slider1" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <ImageView
+                android:layout_width="45.5dp"
+                android:layout_height="55.5dp"
+                android:clickable="false"
+                android:id="@+id/imageView1"
+                android:src="@drawable/slider0" />
+        </LinearLayout>
+        <TextView
+            android:text="Ingrese sus datos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:paddingLeft="15dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:id="@+id/space2" />
+        <TextView
+            android:text="Nombre y Apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:paddingLeft="15dp"
+            android:textColor="#3d61ad"
+            android:textSize="18dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/renglon2colores"
+            android:textSize="24dp"
+            android:textColor="#989898"
+            android:inputType="textCapWords|textNoSuggestions"
+            android:textCursorDrawable="@null" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:id="@+id/space2" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:weightSum="2">
+            <TextView
+                android:text="Número de Celular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:paddingLeft="15dp"
+                android:textColor="#3d61ad"
+                android:textSize="18dp" />
+            <TextView
+                android:text="(Ejemplo: 3794555555)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView32"
+                android:paddingLeft="15dp"
+                android:textColor="#4d4d4d"
+                android:textSize="16dp"
+                android:paddingRight="15dp"
+                android:gravity="right" />
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/renglon2colores"
+            android:textSize="24dp"
+            android:textColor="#989898"
+            android:inputType="number"
+            android:textCursorDrawable="@null" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:id="@+id/space2" />
+        <TextView
+            android:text="Contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:paddingLeft="15dp"
+            android:textColor="#3d61ad"
+            android:textSize="18dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText3"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/renglon2colores"
+            android:textSize="24dp"
+            android:textColor="#989898"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:id="@+id/space2" />
+        <TextView
+            android:text="Confirmar Contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:paddingLeft="15dp"
+            android:textColor="#3d61ad"
+            android:textSize="18dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText4"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/renglon2colores"
+            android:textSize="24dp"
+            android:textColor="#989898"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linboton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2"
+        android:background="@drawable/btnlogingris">
+        <Button
+            android:text="CANCELAR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:background="@drawable/btnlogingris"
+            android:textColor="#FFFFFF" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="55.5dp"
+            android:clickable="false"
+            android:id="@+id/imageView1"
+            android:src="@drawable/sepboton"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="#6d6e70" />
+        <Button
+            android:text="SIGUIENTE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button1"
+            android:layout_weight="1"
+            android:background="@drawable/btnlogingris"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</RelativeLayout>

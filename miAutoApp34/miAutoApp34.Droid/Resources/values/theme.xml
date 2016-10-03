@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<color name="theme_black_notitlebar_background">#fffbfbfb</color>
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/splash</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+  <style name="Theme.Custom" parent="@android:style/Theme.Black.NoTitleBar">
+    <item name="android:colorBackground">#FFFFFF</item>
+    <item name="android:windowBackground">?android:attr/colorBackground</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+</resources>

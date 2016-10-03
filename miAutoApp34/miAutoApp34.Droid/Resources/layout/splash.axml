@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1"
+    p1:gravity="center_vertical"
+    p1:background="#FFFFFF">
+    <ImageView
+        p1:src="@drawable/logo1"
+        p1:id="@+id/imageView1"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:scaleX="0.75"
+        p1:scaleY="0.75" />
+    <ProgressBar
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/progressBar1"
+        p1:visibility="visible" />
+    <Button
+        p1:text="Button"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/button1" />
+</LinearLayout>

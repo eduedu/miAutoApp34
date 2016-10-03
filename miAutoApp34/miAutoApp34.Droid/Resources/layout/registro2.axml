@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#3e61ad">
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <ImageView
+                android:layout_width="45.5dp"
+                android:layout_height="55.5dp"
+                android:clickable="false"
+                android:background="#0000"
+                android:src="@drawable/logobarra"
+                android:id="@+id/imageView1" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:background="#0000"
+                android:text="Registro"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <ImageView
+                android:layout_width="45.5dp"
+                android:layout_height="55.5dp"
+                android:clickable="false"
+                android:id="@+id/imageView1"
+                android:src="@drawable/slider2" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/space1" />
+            <ImageView
+                android:layout_width="45.5dp"
+                android:layout_height="55.5dp"
+                android:clickable="false"
+                android:id="@+id/imageView1"
+                android:src="@drawable/slider1" />
+        </LinearLayout>
+        <TextView
+            android:text="Términos y condiciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:paddingLeft="15dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:id="@+id/space2" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="388.0dp"
+            android:id="@+id/textView2"
+            android:paddingLeft="15dp"
+            android:textColor="#000000"
+            android:text="@string/condiciones"
+            android:scrollbars="vertical"
+            android:layout_marginBottom="0.0dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:maxLines="23" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linboton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2"
+        android:background="@drawable/btnlogingris">
+        <Button
+            android:text="VOLVER"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:background="@drawable/btnlogingris"
+            android:textColor="#FFFFFF" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="55.5dp"
+            android:clickable="false"
+            android:id="@+id/imageView1"
+            android:src="@drawable/sepboton"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="#6d6e70" />
+        <Button
+            android:text="ACEPTO"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button1"
+            android:layout_weight="1"
+            android:background="@drawable/btnlogingris"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</RelativeLayout>
