@@ -243,6 +243,15 @@ namespace miAutoApp34.Droid {
 
 								//Activity.FinishAndRemoveTask();
 								Activity.Finish();
+
+								/*var miIntent = new Intent(null, typeof(mainFragment));
+								//miIntent.AddFlags(ActivityFlags.NoAnimation);
+								miIntent.AddFlags(ActivityFlags.ClearTop|ActivityFlags.NewTask|ActivityFlags.NoAnimation);
+								//miIntent.PutExtra("nya", e.mProfile.Name);
+								//miIntent.PutExtra("fid", e.mProfile.Id);
+								StartActivity(miIntent);
+								Activity.Finish();
+								*/
 								//});
 								//Activity.Parent.FinishAndRemoveTask();
 							}

@@ -40,6 +40,13 @@ namespace miAutoApp34.Droid {
 			inflater = _inflater;
 			View view = inflater.Inflate(Resource.Layout.fAutos, container, false);
 
+			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			string terminar = misDatos.GetString("datoConAuto", "");
+			if (terminar != "") {
+				Activity.FinishAffinity();
+				//return;
+				//Finish();
+			}
 
 			//CONTROLES
 			titulo = view.FindViewById<TextView>(Resource.Id.textView2);
@@ -116,6 +123,13 @@ namespace miAutoApp34.Droid {
 		/// ON RESUME
 		public override void OnResume() {
 			base.OnResume();
+			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			string terminar = misDatos.GetString("datoConAuto", "");
+			if (terminar != "") {
+				Activity.FinishAffinity();
+				//return;
+				//Finish();
+			}
 			/*
 			new Thread(new ThreadStart(delegate {
 				bool SinConexion = false;
@@ -186,7 +200,7 @@ namespace miAutoApp34.Droid {
 
 			})).Start();
 			*/
-			
+
 			new Thread(new ThreadStart(delegate {
 				bool SinConexion = false;
 				//LEO VARIABLE "CAMBIO"

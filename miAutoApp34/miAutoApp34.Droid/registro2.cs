@@ -21,6 +21,14 @@ namespace miAutoApp34.Droid {
 			RequestWindowFeature(WindowFeatures.NoTitle);
 			base.OnCreate(savedInstanceState);
 
+			//DATOS
+			ISharedPreferences misDatos;
+			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			string terminar = misDatos.GetString("terminar", "");
+			if (terminar == "1") {
+				Finish();
+			}
+
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.registro2);
 
@@ -150,12 +158,14 @@ wc.UploadValuesCompleted += (sender, e) => {
 						//wc.UploadValuesAsync(uri, "POST", keyval, Guid.NewGuid().ToString());
 						wc.UploadValues(uri, keyval);
 
-						ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+						//ISharedPreferences 
+						misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
 						ISharedPreferencesEditor cargarDatos = misDatos.Edit();
 						cargarDatos.PutString("num", num);
 						//cargarDatos.PutString("p", p);
 						cargarDatos.PutString("nya", nya);
 						cargarDatos.PutString("fid", fid);
+						cargarDatos.PutString("terminar", "1");
 						cargarDatos.Apply();
 
 						///// ///////////CARGAR SOLICITUD//////////////////
@@ -163,9 +173,17 @@ wc.UploadValuesCompleted += (sender, e) => {
 
 						RunOnUiThread(() => progressDialog.Hide());
 						//cargarDatos.Commit();
-						StartActivity(typeof(mainFragment));
-						Finish();
+						//StartActivity(typeof(mainFragment));
+						//Finish();
 
+						var miIntent = new Intent(this, typeof(mainFragment));
+						//miIntent.AddFlags(ActivityFlags.NoAnimation);
+						//miIntent.AddFlags(ActivityFlags.ClearTop|ActivityFlags.NewTask);
+						//miIntent.PutExtra("nya", e.mProfile.Name);
+						//miIntent.PutExtra("fid", e.mProfile.Id);
+						StartActivity(miIntent);
+						Finish();
+						//FinishAndRemoveTask();
 
 					}
 					catch (WebException ex) {

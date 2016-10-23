@@ -349,6 +349,7 @@ namespace miAutoApp34.Droid {
 
 									var miIntent = new Intent(this, typeof(registro1));
 									miIntent.AddFlags(ActivityFlags.NoAnimation);
+									//miIntent.AddFlags(ActivityFlags.ClearTask);
 									miIntent.PutExtra("nya", e.mProfile.Name);
 									miIntent.PutExtra("fid", e.mProfile.Id);
 									StartActivity(miIntent);
