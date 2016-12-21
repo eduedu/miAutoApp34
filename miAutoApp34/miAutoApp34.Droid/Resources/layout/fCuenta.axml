@@ -16,16 +16,30 @@
         android:gravity="center"
         android:textSize="18dp"
         android:layout_marginTop="5dp" />
-    <ImageView
+    <RelativeLayout
+        android:id="@+id/relayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imAuto"
-        android:src="@drawable/icon"
-        android:longClickable="true" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="1.0dp"
-        android:id="@+id/space3" />
+        android:gravity="center">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imAuto"
+            android:src="@drawable/icon"
+            android:longClickable="true"
+            android:layout_centerInParent="true" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imlupa"
+            android:src="@drawable/lupa3"
+            android:longClickable="true"
+            android:layout_alignRight="@id/imAuto"
+            android:layout_alignBottom="@id/imAuto"
+            android:tint="#00ffffff"
+            android:alpha="0.75"
+            android:layout_margin="20dp" />
+    </RelativeLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -48,6 +62,77 @@
             android:layout_width="match_parent"
             android:layout_weight="8"
             android:layout_gravity="center">
+            <RelativeLayout
+                android:id="@+id/relayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+            <!--
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageCanvas2"
+                    android:src="@color/colGris4"
+                    android:layout_centerInParent="true" />
+                -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:id="@+id/linearRegistrados">
+                    <TextView
+                        android:text="AMIGOS REGISTRADOS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/twAmigosRegistrados"
+                        android:gravity="center"
+                        android:textColor="@color/colGris1"
+                        android:layout_centerInParent="true"
+                        android:textSize="13dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <ImageView
+                            android:src="@drawable/iconocontactos1"
+                            android:layout_width="55dp"
+                            android:layout_height="35dp"
+                            android:id="@+id/imageView1" />
+                        <TextView
+                            android:text="01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twRegistrados"
+                            android:gravity="center"
+                            android:textColor="@color/colAzul"
+                            android:layout_centerInParent="true"
+                            android:textSize="20dp" />
+                        <TextView
+                            android:text="/72"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twTotalReferidos"
+                            android:gravity="center"
+                            android:textColor="@color/colGris2"
+                            android:layout_centerInParent="true"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                    <ImageView
+                        android:src="@color/colGris3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/separador1"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/relayout1"
                 android:layout_width="match_parent"
@@ -78,7 +163,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:id="@+id/linearLayout13">
                         <TextView
                             android:text="01"
                             android:layout_width="wrap_content"
@@ -97,67 +183,6 @@
                             android:textColor="@color/colGris2"
                             android:layout_centerInParent="true"
                             android:textSize="18dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/relayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-            <!--
-                <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:id="@+id/imageCanvas2"
-                    android:src="@color/colGris4"
-                    android:layout_centerInParent="true" />
-                    -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerInParent="true"
-                    android:gravity="center">
-                    <ImageView
-                        android:src="@color/colGris3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/separador1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp" />
-                    <TextView
-                        android:text="AMIGOS REGISTRADOS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/twAmigosRegistrados"
-                        android:gravity="center"
-                        android:textColor="@color/colGris1"
-                        android:layout_centerInParent="true"
-                        android:textSize="14dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
-                        <ImageView
-                            android:src="@drawable/iconocontactos1"
-                            android:layout_width="55dp"
-                            android:layout_height="35dp"
-                            android:id="@+id/imageView1" />
-                        <TextView
-                            android:text="01"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/twRegistrados"
-                            android:gravity="center"
-                            android:textColor="@color/colAzul"
-                            android:layout_centerInParent="true"
-                            android:textSize="20dp" />
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
@@ -180,29 +205,94 @@
                 android:textSize="15dp"
                 android:layout_margin="2dp" />-->
             <LinearLayout
-                android:id="@+id/btnllaves"
+                android:id="@+id/pedirMiAuto"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:background="@drawable/botonamarilloconsombra"
+                android:background="@drawable/botonazulconsombra"
                 android:layout_margin="2dp"
                 android:clickable="true">
                 <ImageView
-                    android:src="@drawable/llaveiconob"
+                    android:src="@drawable/iconoauto"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="0.0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="3dp" />
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:id="@+id/imageView5" />
                 <TextView
-                    android:id="@+id/tvConseguiLlaves"
-                    android:text="CONSEGUÍ MÁS LLAVES"
+                    android:id="@+id/tvConsulta"
+                    android:text="Pedir MiAuto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:textSize="17dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/contactar"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:background="@drawable/botonazulconsombra"
+                android:layout_margin="2dp"
+                android:clickable="true">
+                <ImageView
+                    android:src="@drawable/support00"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0.0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:id="@+id/imageView2" />
+                <TextView
+                    android:id="@+id/tvSolicitar"
+                    android:text="SOLICITAR ASESOR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"
                     android:gravity="center" />
             </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout6"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="PRÓXIMO VENCIMIENTO"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2c"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/colGris3"
+                    android:textSize="14dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp" />
+                <TextView
+                    android:text="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/twVencimiento"
+                    android:gravity="center|right"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/colGris1"
+                    android:textSize="18dp"
+                    android:layout_weight="1.1"
+                    android:layout_marginRight="5dp" />
+            </LinearLayout>
+            <ImageView
+                android:src="@color/colGris3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/separador5"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -233,44 +323,6 @@
                     android:layout_marginRight="5dp"
                     android:paddingRight="5dp" />
             </LinearLayout>
-            <ImageView
-                android:src="@color/colGris3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/separador5"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp" />
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/linearLayout6"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical">
-                <TextView
-                    android:text="PRÓXIMO VENCIMIENTO"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView2c"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/colGris3"
-                    android:textSize="14dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="5dp" />
-                <TextView
-                    android:text="1"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/twVencimiento"
-                    android:gravity="center|right"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/colGris1"
-                    android:textSize="18dp"
-                    android:layout_weight="1.1"
-                    android:layout_marginRight="5dp" />
-            </LinearLayout>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -279,30 +331,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:id="@+id/space5" />
-            <LinearLayout
-                android:id="@+id/consulta"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:background="@drawable/botonazulconsombra"
-                android:layout_margin="2dp"
-                android:clickable="true">
-                <ImageView
-                    android:src="@drawable/chat01"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="0.0dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="4dp" />
-                <TextView
-                    android:id="@+id/tvConsulta"
-                    android:text="ENVIAR CONSULTA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center" />
-            </LinearLayout>
         <!--  <Button
                 android:text="Enviar Consulta"
                 android:id="@+id/consulta"
@@ -324,24 +352,25 @@
                 android:layout_margin="2dp" />
                 -->
             <LinearLayout
-                android:id="@+id/contactar"
+                android:id="@+id/btnllaves"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:background="@drawable/botonazulconsombra"
+                android:background="@drawable/botonamarilloconsombra"
                 android:layout_margin="2dp"
                 android:clickable="true">
                 <ImageView
-                    android:src="@drawable/support00"
+                    android:src="@drawable/llaveiconob"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="0.0dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="4dp" />
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="3dp"
+                    android:id="@+id/imageView4" />
                 <TextView
-                    android:id="@+id/tvSolicitar"
-                    android:text="SOLICITAR ASESOR"
+                    android:id="@+id/tvConseguiLlaves"
+                    android:text="CONSEGUÍ MÁS LLAVES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"

@@ -10,9 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
-using System.IO;
+//using System.IO;
 using Javax;
 using Android.Util;
+using System.IO;
+//using Java.IO;
 
 namespace miAutoApp34.Droid {
 	public static class memoriaInterna {
@@ -276,6 +278,41 @@ namespace miAutoApp34.Droid {
 			tmpCargarDatos.Apply();
 
 			Console.WriteLine("FINAL CAMBIOS: " + finalCambios);
+		}
+		public static void trimCache(Context context) {
+			try {
+				Java.IO.File dir = context.ExternalCacheDir;
+				bool esdir = dir.IsDirectory;
+				if (dir != null && esdir) {
+					deleteDir(dir);
+				}
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+
+		public static bool deleteDir(Java.IO.File dir) {
+			if (dir != null && dir.IsDirectory) {
+				String[] children = dir.List();
+				for (int i = 0; i < children.Length; i++) {
+					bool success = deleteDir(new Java.IO.File (dir, children[i]));
+					if (!success) {
+						return false;
+					}
+				}
+			}
+			// The directory is now empty so delete it
+			return dir.Delete();
+		}
+		public static void mostrarAyudaReferidos() {
+			ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			string mNoMostrarAyuda = misDatos.GetString("NoMostrarAyuda", "");
+			if (mNoMostrarAyuda != "1") {
+				ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
+				tmpCargarDatos.PutString("ayudaReferidos", "1");
+				tmpCargarDatos.Apply();
+			}
 		}
 	}
 }

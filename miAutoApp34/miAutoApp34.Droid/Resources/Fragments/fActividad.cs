@@ -16,6 +16,7 @@ using System.IO;
 using System.Net;
 using System.Json;
 using Newtonsoft.Json;
+using Android.Graphics;
 
 namespace miAutoApp34.Droid {
 	public class fActividad : SupportFragment {
@@ -26,6 +27,7 @@ namespace miAutoApp34.Droid {
 		public Android.Graphics.Typeface fntBold;
 
 		/// globales
+		List<Linea> mItems;
 		string nya;
 		string num;
 		TextView txtMensaje;
@@ -42,6 +44,8 @@ namespace miAutoApp34.Droid {
 		string dUrlCompartirTexto;
 		string dUrlCompartirImagen;
 		string dUrlCompartirMensaje;
+		string miVersion;
+		string nuevaVersion;
 
 		public override void OnCreate(Bundle savedInstanceState) {
 			base.OnCreate(savedInstanceState);
@@ -71,6 +75,8 @@ namespace miAutoApp34.Droid {
 			dUrlCompartirTexto = misDatos.GetString("urlCompartirTexto", "");
 			dUrlCompartirImagen = misDatos.GetString("urlCompartirImagen", "");
 			dUrlCompartirMensaje = misDatos.GetString("urlCompartirMensaje", "");
+			miVersion = misDatos.GetString("miVersion", "");
+			nuevaVersion = misDatos.GetString("nuevaVersion", "");
 
 
 			///REFERENCIAS A CONTROLES//////////////////////////////////////////////////
@@ -82,6 +88,7 @@ namespace miAutoApp34.Droid {
 			Button btnPromociones = view.FindViewById<Button>(Resource.Id.btnPromociones);
 			Button btnConsultar = view.FindViewById<Button>(Resource.Id.btnConsultar);
 			mListView = view.FindViewById<ListView>(Resource.Id.myListView);
+			LinearLayout lista = view.FindViewById<LinearLayout>(Resource.Id.layoutLista);
 
 			btnReferidos.Typeface = fntCondensesBold;
 			btnReferidos.SoundEffectsEnabled = true;
@@ -99,7 +106,6 @@ namespace miAutoApp34.Droid {
 			//txtMensaje.Typeface = fntBlack;
 			//txtMensaje.Text = "¡Bienvenido " + nya + "!";
 			MostrarTextoMensaje(false);
-
 
 
 			////////////////BOTON REFERIDOSSSS///////////////////////////////
@@ -120,6 +126,8 @@ namespace miAutoApp34.Droid {
 
 				//ft.Commit();
 
+				//hace que muestre la ayuda//////////////
+				memoriaInterna.mostrarAyudaReferidos();
 
 
 				var miIntent = new Intent(container.Context, typeof(refeMain));
@@ -145,6 +153,7 @@ namespace miAutoApp34.Droid {
 
 			//BOTON CONSULTA
 			btnConsultar.Click += (o, s) => {
+				//------------------------------------------
 				Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
 				//Remove fragment else it will crash as it is already added to backstack
 				Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
@@ -157,18 +166,97 @@ namespace miAutoApp34.Droid {
 				dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
 				//Add fragment
 				newFragmentContactar.Show(ft, "dialogConsulta");
+				//------------------------------------------
+			};
+
+			///CLICK EN EL TEXTO DE TITULO
+			txtMensaje.Click += (s, o) => {
+				if (miVersion.Trim() != nuevaVersion.Trim()) {
+
+					//market://details?id=com.gmail.educontratodos.miautoplan1
+					string appPackageName = "com.gmail.educontratodos.miautoplan1";
+					try {
+						StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("market://details?id=" + appPackageName)));
+					}
+					catch (Exception ex) {
+						StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+					}
+
+				}
 			};
 
 			CargarDatosDesdePreferencesNoticias();
 			ActualizarInterfaceNoticias();
 			tvValorllave.Text = "$ " + dValorLlave;
 
+
+			//CLICK EN ELEMENTOS DE LA LISTA
+			mListView.ItemClick += (o, e) => {
+				Console.WriteLine("CLICK EN LISTA. Posicion:" + e.Position.ToString());
+
+				//var item = this.adapter.GetItem(e.Position).ToString();
+
+				//Make a toast with the item name just to show it was clicked
+				//Toast.MakeText(this, item.Name + " Clicked!", ToastLength.Short).Show();
+
+				//Console.WriteLine("Contenido" + mItems[e.Position].linea1);
+				string tmpFiltro = "Mensaje exclusivo para";
+				if (mItems[e.Position].linea1.Length >= tmpFiltro.Length) {
+					//if (mItems[position].linea1.Substring(0, 4) == "Para") {
+					if (mItems[e.Position].linea1.Substring(0, tmpFiltro.Length) == tmpFiltro) {
+						//string colorMensajePersonal = "#3E61AD";
+						//-------------------------------------
+						Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+						//Remove fragment else it will crash as it is already added to backstack
+						Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
+						if (prev != null) {
+							ft.Remove(prev);
+						}
+						ft.AddToBackStack(null);
+						// Create and show the dialog.
+						//dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
+						dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
+						//Add fragment
+						newFragmentContactar.Show(ft, "dialogConsulta");
+						//------------------------------------------
+					}
+				}
+			};
+
+
+			//lista.Click += (o,s) =>{
+			//	Console.WriteLine("CLICK EN LISTA");
+			//mListView.Click();
+			//adapter.ItemLayout_Click(o, s);
+			//};
+			/*
+			lista.Touch += (o, s) => {
+				string message;
+				switch (s.Event.Action & MotionEventActions.Mask) {
+					case MotionEventActions.Down:
+					case MotionEventActions.Move:
+						message = "Touch Begins";
+						break;
+
+					case MotionEventActions.Up:
+						message = "Touch Ends";
+						break;
+
+					default:
+						message = string.Empty;
+						break;
+				}
+
+				Console.WriteLine(message);
+			};
+			*/
 			return view;
 			// return base.OnCreateView(inflater, container, savedInstanceState);
 		}
 		/// ON RESUME
 		public override void OnResume() {
 			base.OnResume();
+			MostrarTextoMensaje(false);
 			//Console.WriteLine("------OnResume");
 			new Thread(new ThreadStart(delegate {
 				bool SinConexion = false;
@@ -181,7 +269,7 @@ namespace miAutoApp34.Droid {
 				string[] webCambio = webCambios.Split('[');
 				//LEO "preCambio" en PREFERENCIAS
 				misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-				string preCambios = misDatos.GetString("preCambios", "0[0[0[0[ [ [ [ [ ");
+				string preCambios = misDatos.GetString("preCambios", "0[0[0[0[ [ [ [ [ [");
 				string[] preCambio = preCambios.Split('[');
 
 				//cargar el valor de la llave
@@ -198,6 +286,12 @@ namespace miAutoApp34.Droid {
 				//if ((webCambio[1] != preCambio[1])  && !SinConexion) {
 				if (!SinConexion) {
 					ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
+
+					//CONTROL DE VERSION
+					string tmpNuevaVersion = webCambio[9].ToString().Trim();
+					tmpCargarDatos.PutString("nuevaVersion", tmpNuevaVersion);
+					tmpCargarDatos.Apply();
+					nuevaVersion = tmpNuevaVersion;
 
 					if ((webCambio[1] != dValorLlave) && !SinConexion) {
 						dValorLlave = webCambio[1];
@@ -223,7 +317,7 @@ namespace miAutoApp34.Droid {
 
 					//si cambio urlCompartir
 					if ((webCambio[4] != dUrlCompartir) && !SinConexion) {
-						dUrlCompartir= webCambio[4].Trim();
+						dUrlCompartir = webCambio[4].Trim();
 						//ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
 						tmpCargarDatos.PutString("urlCompartir", dUrlCompartir);
 						tmpCargarDatos.Apply();
@@ -325,6 +419,18 @@ namespace miAutoApp34.Droid {
 				txtMensaje.Typeface = fntBlack;
 				//temp.Text = "¡Bienvenido " + nya + "! \n fid:" + fid;
 				txtMensaje.Text = "¡Bienvenido " + nya + "!";
+				//txtMensaje.Text = "VErsion:" + miVersion;
+			}
+			if (miVersion.Trim() != nuevaVersion.Trim() && nuevaVersion.Trim() != "") {
+				//Console.WriteLine("VERSIONES:" + miVersion + "-" + nuevaVersion;)
+				txtMensaje.SetTextColor(Color.ParseColor("#ff0000"));
+				txtMensaje.Typeface = fntBlack;
+				txtMensaje.Text = "Hay una nueva versión de la app.\nClick aquí para actualizar.";
+				//txtMensaje.Text = "VErsion:" + miVersion;
+				//txtMensaje.Text = "VERSIONES:" + miVersion + "-" + nuevaVersion;
+			}
+			else {
+				txtMensaje.SetTextColor(Color.ParseColor("#4d4d4d"));
 			}
 		}
 
@@ -356,7 +462,8 @@ namespace miAutoApp34.Droid {
 		/// ACTUALZIAR INTERFACE
 		public void ActualizarInterfaceNoticias() {
 			//tvValorllave.Text = "$ " + dValorLlave;
-			List<Linea> mItems = new List<Linea>();
+			//List<Linea> 
+			mItems = new List<Linea>();
 
 			//Console.WriteLine("ACTUALZIAR INTERFACE:");
 			//Console.WriteLine("preNoticias:" + preNoticias);
@@ -368,7 +475,10 @@ namespace miAutoApp34.Droid {
 			}
 
 			//adapter = new MyListViewAdapter(inflater.Context, mItems, fntBlack, fntRegular);
-			adapter = new MyListViewAdapter(Context, mItems, fntBlack, fntRegular);
+			//Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+			//Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+			//adapter = new MyListViewAdapter(Context, mItems, fntBlack, fntRegular);
+			adapter = new MyListViewAdapter(this.Activity, mItems, fntBlack, fntRegular);
 			mListView.Adapter = adapter;
 			//Console.WriteLine("-------------------");
 
@@ -408,18 +518,19 @@ namespace miAutoApp34.Droid {
 							bool agregar = true;
 							if (campo[1].Length > 2) {
 								//Console.WriteLine(campo[1].Substring(0, 2));
-								if (campo[1].Substring(0,2)=="P:") {
-									string[] tmpTitulos = campo[1].Split(new[] { "P:", "(",")" }, StringSplitOptions.RemoveEmptyEntries);
+								if (campo[1].Substring(0, 2) == "P:") {
+									string[] tmpTitulos = campo[1].Split(new[] { "P:", "(", ")" }, StringSplitOptions.RemoveEmptyEntries);
 									//campo[1] = "Para: ";
-									Console.WriteLine("0: "+tmpTitulos[0]);
+									Console.WriteLine("0: " + tmpTitulos[0]);
 									Console.WriteLine("1: " + tmpTitulos[1]);
 									Console.WriteLine("num: " + num);
 									//tmpTitulo = "Para " + tmpTitulos[0];
 									//tmpTitulo = "Mensaje personal:";
 									tmpTitulo = "Mensaje exclusivo para " + tmpTitulos[0];
 									if (num.Trim() == tmpTitulos[1].Trim()) {
-										Console.WriteLine("IGUALES, MOSTRAR" );
-									} else {
+										Console.WriteLine("IGUALES, MOSTRAR");
+									}
+									else {
 										agregar = false;
 									}
 								}
@@ -427,7 +538,10 @@ namespace miAutoApp34.Droid {
 							if (agregar) {
 								tmpItemsNoticias.Add(new Linea() { linea1 = tmpTitulo, linea2 = tmpFechaFormateada, linea3 = campo[2] });
 							}
-							
+
+
+						}
+						else {
 
 						}
 						i++;
@@ -553,5 +667,11 @@ namespace miAutoApp34.Droid {
 			//progressDialog.Hide();
 		}
 		*/
+		public void clickEnLista() {
+			//lista.Click += (o, s) => {
+			Console.WriteLine("CLICK EN LISTA");
+			//};
+		}
 	}
+
 }

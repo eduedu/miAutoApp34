@@ -105,7 +105,16 @@ namespace miAutoApp34.Droid {
 
 			///////////////////////////////////BOTON CANCELAR////////////////////
 			btnCancelar.Click += delegate {
-				base.OnBackPressed();
+				//base.OnBackPressed();
+				var miIntent = new Intent(this, typeof(login1));
+				/*
+				miIntent.AddFlags(ActivityFlags.NoAnimation);
+				miIntent.PutExtra("nya", campo1.Text.Trim());
+				miIntent.PutExtra("num", campo2.Text.Trim());
+				miIntent.PutExtra("p", campo3.Text.Trim());
+				miIntent.PutExtra("fid", fid);
+				*/
+				StartActivity(miIntent);
 			};
 
 

@@ -111,7 +111,8 @@
             android:minWidth="25px"
             android:minHeight="25px"
             android:orientation="horizontal"
-            android:gravity="end|bottom">
+            android:gravity="end|bottom"
+            android:id="@+id/layoutLista">
             <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp"

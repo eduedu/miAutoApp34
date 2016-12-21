@@ -36,7 +36,6 @@ namespace miAutoApp34.Droid {
 			Typeface tf = Typeface.CreateFromAsset(Assets, "fonts/ROBOTO-BOLD.TTF");
 			Typeface tf2 = Typeface.CreateFromAsset(Assets, "fonts/ROBOTO-REGULAR.TTF");
 			Typeface tf3 = Typeface.CreateFromAsset(Assets, "fonts/ROBOTO-BLACK.TTF");
-
 			TextView texto0 = FindViewById<TextView>(Resource.Id.titulo);
 			TextView texto1 = FindViewById<TextView>(Resource.Id.textView1);
 			TextView texto2 = FindViewById<TextView>(Resource.Id.textView2);
@@ -58,6 +57,10 @@ namespace miAutoApp34.Droid {
 					num = num.Substring(4, num.Length - 4);
 				}
 			}
+
+			///////////////////CARGAR TERMINOS Y CONDICIONES DESDE VARIABLES
+			string tmpTerminos = solicitudesWeb.getVariable("terminosYcondiciones");
+			texto2.Text = tmpTerminos;
 
 			///////////////////BOTON VOLVER
 			Button btnVolver = FindViewById<Button>(Resource.Id.button2);

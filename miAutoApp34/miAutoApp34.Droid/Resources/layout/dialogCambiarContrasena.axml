@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:id="@+id/LinearMain"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dp"
+    android:background="#4d4d4d">
+    <TextView
+        android:text="Cambiar contraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:textColor="#FFFFFF"
+        android:textSize="19dp" />
+    <TextView
+        android:text="Contraseña anterior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/txtAnterior"
+        android:background="@color/colGris4"
+        android:textAlignment="gravity"
+        android:gravity="left|top"
+        android:maxLines="20"
+        android:layout_marginBottom="0.0dp"
+        android:textSize="22dp"
+        android:layout_marginTop="8dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/imageView1"
+        android:background="@color/colGris4"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:text="Nueva Contraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/txtNueva"
+        android:background="@color/colGris4"
+        android:textAlignment="gravity"
+        android:gravity="left|top"
+        android:maxLines="20"
+        android:layout_marginBottom="0.0dp"
+        android:textSize="22dp"
+        android:layout_marginTop="8dp" />
+    <TextView
+        android:text="Confirmar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/txtRepetir"
+        android:background="@color/colGris4"
+        android:textAlignment="gravity"
+        android:gravity="left|top"
+        android:maxLines="20"
+        android:layout_marginBottom="15.0dp"
+        android:textSize="22dp"
+        android:layout_marginTop="8dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+        <Button
+            android:text="Cancelar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btnCancelar"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnloginazul"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" />
+        <Button
+            android:text="Continuar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btnContinuar"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnloginazul"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
+</LinearLayout>

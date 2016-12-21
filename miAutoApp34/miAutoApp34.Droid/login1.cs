@@ -113,7 +113,12 @@ namespace miAutoApp34.Droid {
 
 			//Console.WriteLine("NNNNNNNNNNNNumero:"+ miNumero);
 			campo1.Text = miNumero;
-
+			////////////////////////////////////////////////////////////////
+			if (AccessToken.CurrentAccessToken != null) {
+				//The user is logged in through Facebook
+				LoginManager.Instance.LogOut();
+				//faceBookButton.Text = "My Facebook login button";
+			}
 			////////////////////////////////////////////////BOTON FACEBOOK///////////////////////////////////////////////////
 			btnFacebook.Click += (o, e) => {
 				List<string> permisos = new List<string>(new string[] { "public_profile" });
@@ -254,6 +259,9 @@ namespace miAutoApp34.Droid {
 										cargarDatos.PutString("p", campo2.Text.Trim());
 										cargarDatos.PutString("nya", contents[1]);
 										cargarDatos.PutString("miauto_id", contents[2]);
+										if (contents[2] != "") {
+											cargarDatos.PutString("datoConAuto", contents[2]);
+										}
 										cargarDatos.Apply();
 										StartActivity(typeof(mainFragment));
 										Finish();
@@ -359,12 +367,16 @@ namespace miAutoApp34.Droid {
 									string[] contents = content.Split(separador);
 									///////SI YA EXISTE LA CUENTA DE FACEBOOK, ir a MAINFRAGMENT
 									//Console.WriteLine("CORRECTO");
+									Console.Out.WriteLine("CUENTA FACEBOOK EXISTENTE");
 									ISharedPreferencesEditor cargarDatos = misDatos.Edit();
 									cargarDatos.PutString("num", contents[0]);
 									cargarDatos.PutString("p", "");
 									cargarDatos.PutString("nya", contents[1]);
 									cargarDatos.PutString("fid", e.mProfile.Id);
 									cargarDatos.PutString("miauto_id", contents[2]);
+									if (contents[2] != "") {
+										cargarDatos.PutString("datoConAuto", contents[2]);
+									}
 									cargarDatos.Apply();
 									StartActivity(typeof(mainFragment));
 									Finish();
@@ -431,6 +443,7 @@ namespace miAutoApp34.Droid {
 
 		public OnProfileChangedEventArgs(Profile profile) { mProfile = profile; }
 	}
+
 }
 
 

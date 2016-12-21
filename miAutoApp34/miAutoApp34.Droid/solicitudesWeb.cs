@@ -53,16 +53,21 @@ namespace miAutoApp34.Droid {
 			bool respuesta;
 			string num = "";
 			string nya = "";
+			string miauto_titulo = "";
 			//SI NO se carga solamente el numero, leer los otros datos de las preferencias
 			if (!cargarSolamenteElNumero) {
 				ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
 				num = misDatos.GetString("num", "");
 				nya = misDatos.GetString("nya", "");
+				miauto_titulo = misDatos.GetString("miauto_titulo", "");
 			}
 			else {
 				num = variablesGlobales.numeroTemp;
 			}
 
+			if (notaSolicitud == "miauto_titulo") {
+				notaSolicitud = miauto_titulo;
+			}
 
 			//CARGAR DATOS EN BASE DE DATOS
 			string formkey = "1n5An84TrTn4abT_QXJYc4-1fwhzBpLWEkYGsVt-4fvI";
@@ -171,6 +176,31 @@ namespace miAutoApp34.Droid {
 			}
 
 
+		}
+		public static string setContrasena(string numerotel, string anterior, string nueva) {
+			string retorno = "0";
+			string respuesta = "";
+			string uriStr = "https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec"
+				+ "?action=setContrasena"
+				+ "&num=" + numerotel
+				+ "&anterior=" + anterior
+				+ "&nueva=" + nueva;
+			try {
+				var request = HttpWebRequest.Create(@uriStr);
+				request.ContentType = "application /json";
+				request.Method = "GET";
+				HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+				using (StreamReader reader = new StreamReader(response.GetResponseStream())) {
+					respuesta = reader.ReadToEnd().ToString();
+					retorno = respuesta;
+				}
+			}
+			catch (WebException ex) {
+				//Console.WriteLine("ERROR DE CONEXION: " + ex.Message);
+				//respuesta = "SinConexion";
+				retorno = "0";
+			}
+			return retorno;
 		}
 		public static string getDatosAuto(string idAuto) {
 			string respuesta = "";

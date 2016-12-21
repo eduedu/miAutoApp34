@@ -31,6 +31,7 @@ namespace miAutoApp34.Droid {
 		TextView titulo;
 		ProgressBar progressBar1;
 		List<string> ListaArchivosDeImagenesEnUso;
+		string mDatoConAuto;
 		public override void OnCreate(Bundle savedInstanceState) {
 			base.OnCreate(savedInstanceState);
 			//SetContentView(Resource.Layout.autos);
@@ -42,8 +43,10 @@ namespace miAutoApp34.Droid {
 
 			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
 			string terminar = misDatos.GetString("datoConAuto", "");
+			mDatoConAuto = misDatos.GetString("datoConAuto", "");
+			Console.WriteLine("datoconauto:" + mDatoConAuto);
 			if (terminar != "") {
-				Activity.FinishAffinity();
+				//7Activity.FinishAffinity();
 				//return;
 				//Finish();
 			}
@@ -103,6 +106,7 @@ namespace miAutoApp34.Droid {
 				miIntent.PutExtra("detalle.descripcion", mAutos[args.Position].descripcion);
 				miIntent.PutExtra("detalle.precio", mAutos[args.Position].precio);
 				miIntent.PutExtra("detalle.id", mAutos[args.Position].id.ToString());
+				miIntent.PutExtra("detalle.llaves", mAutos[args.Position].llaves);
 				//Console.WriteLine("auto:" + mAutos[args.Position].nombre);
 				//Console.WriteLine("id:" + mAutos[args.Position].id);
 
@@ -125,8 +129,9 @@ namespace miAutoApp34.Droid {
 			base.OnResume();
 			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
 			string terminar = misDatos.GetString("datoConAuto", "");
+			mDatoConAuto = misDatos.GetString("datoConAuto", "");
 			if (terminar != "") {
-				Activity.FinishAffinity();
+				//7Activity.FinishAffinity();
 				//return;
 				//Finish();
 			}
@@ -237,7 +242,7 @@ namespace miAutoApp34.Droid {
 						if (tmpConexionInternet) {
 							//Console.WriteLine("DAtos leidos y guardados");
 							//guardar preCambios
-							
+
 							//Actualizar UI
 							CargarDatosDesdeCache();
 							//ActualizarImagenesEnCache();
@@ -316,9 +321,10 @@ mCargando.Visibility = ViewStates.Invisible;
 				mAutos = new List<autoClass>();
 				//asigno el nuevo valor recien leido del cache a la lista de objetos global mAutos
 				mAutos = arrayAutos;
-				
+
 			}
-			//Console.WriteLine("cacheAutos:" + mCacheAutos);
+			Console.WriteLine("cacheAutos:" + mCacheAutos);
+
 		}
 		public bool ActualizarImagenesEnMemoriaInterna() {
 			bool retorno = true;
@@ -327,8 +333,8 @@ mCargando.Visibility = ViewStates.Invisible;
 					ListaArchivosDeImagenesEnUso = new List<string>();
 					foreach (autoClass auto in mAutos) {
 						//Console.WriteLine(auto.nombre);
-						Activity.RunOnUiThread(() => MostrarEstado(true, "Actualizando datos ("+auto.nombre+" 1/4)..."));
-						
+						Activity.RunOnUiThread(() => MostrarEstado(true, "Actualizando datos (" + auto.nombre + " 1/4)..."));
+
 						bool a1 = ChequearSiExisteImagenEnMemoriaInterna(auto.url1);
 						Activity.RunOnUiThread(() => MostrarEstado(true, "Actualizando datos (" + auto.nombre + " 2/4)..."));
 						bool a2 = ChequearSiExisteImagenEnMemoriaInterna(auto.url2);
@@ -338,8 +344,8 @@ mCargando.Visibility = ViewStates.Invisible;
 						bool a4 = ChequearSiExisteImagenEnMemoriaInterna(auto.url4);
 						Activity.RunOnUiThread(() => ActualizarInterface());
 						if (a1 && a2 && a3 && a4) {
-							
-							
+
+
 						}
 						else {
 							//problema de conexion a internet
@@ -401,7 +407,7 @@ mCargando.Visibility = ViewStates.Invisible;
 		public void BorrarArchivosQueNoSeUsan() {
 			ListaArchivosDeImagenesEnUso.Add("promo.png");
 			int i = 0;
-			foreach(var item in ListaArchivosDeImagenesEnUso) {
+			foreach (var item in ListaArchivosDeImagenesEnUso) {
 				i++;
 				Console.WriteLine(i.ToString() + "-" + item);
 			}
@@ -410,7 +416,7 @@ mCargando.Visibility = ViewStates.Invisible;
 			i = 0;
 			Context context = Application.Context;
 			string[] archivos = context.FileList();
-			foreach(var archivo in archivos) {
+			foreach (var archivo in archivos) {
 				bool EnUso = false;
 				foreach (var item in ListaArchivosDeImagenesEnUso) {
 					if (item == archivo) {
@@ -423,7 +429,7 @@ mCargando.Visibility = ViewStates.Invisible;
 				}
 				i++;
 				Console.WriteLine(i.ToString() + "-" + archivo);
-				
+
 			}
 			Console.WriteLine("TOTAL ARCHIVOS:" + i.ToString());
 			Console.WriteLine("--------------------");
@@ -448,7 +454,7 @@ mCargando.Visibility = ViewStates.Invisible;
 				//Console.WriteLine("mAutos:" + mAutos.Count);
 				gridview.Adapter = null;
 				gridview.Adapter = new ImageAdapter(inflater.Context, anchoCol, tf3, mAutos);
-				
+
 			}
 
 		}
@@ -463,11 +469,11 @@ mCargando.Visibility = ViewStates.Invisible;
 				//si no existe un valor de cache con ese url, crearlo y descargar imagen
 				if (tmpNombre == "") {
 					tmpCargarDatos.PutString(url, url);
-					var imageBitmap =solicitudesWeb.GetImageBitmapFromUrl(url);
+					var imageBitmap = solicitudesWeb.GetImageBitmapFromUrl(url);
 					var str = "";
 					using (var stream = new MemoryStream()) {
 						imageBitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
-						
+
 						var bytes = stream.ToArray();
 						str = Convert.ToBase64String(bytes);
 						//Console.WriteLine(str);
@@ -508,13 +514,41 @@ mCargando.Visibility = ViewStates.Invisible;
 							//Console.WriteLine(tmpStringCampos);
 							tmpStringCampos = tmpStringCampos.Substring(2, tmpStringCampos.Length - 2);
 							//Console.WriteLine(tmpStringCampos);
-							tmpStringCampos = tmpStringCampos.Substring(0, tmpStringCampos.Length - 1);
-							//Console.WriteLine(tmpStringCampos);
-							string[] campo = tmpStringCampos.Split(new[] { "\", \"", "\", " }, StringSplitOptions.None);
+							tmpStringCampos = tmpStringCampos.Substring(0, tmpStringCampos.Length - 2);
+							Console.WriteLine(tmpStringCampos);
+							string[] campo = tmpStringCampos.Split(new[] { "\", \"", "\", ", ", \"" }, StringSplitOptions.None);
+							Console.WriteLine("CAMPOS EN TOTAL:" + campo.Length);
 							string[] fe1 = campo[0].Split('T');
 							string[] fe2 = fe1[0].Split('-');
-							string tmpFechaFormateada = fe2[2] + "/" + fe2[1] + "/" + fe2[0].Substring(2, 2) + " " + fe1[1].Substring(0, 5);
-							if (campo[4].Trim() != "") {
+							//string tmpFechaFormateada = fe2[2] + "/" + fe2[1] + "/" + fe2[0].Substring(2, 2) + " " + fe1[1].Substring(0, 5);
+							bool tmpSoloCeroKm = false;
+							Console.WriteLine("datoconauto:" + mDatoConAuto);
+							if (mDatoConAuto == "") {
+								tmpSoloCeroKm = true;
+							}
+							bool tmpCerokm = false;
+							if (campo[10] == "1") {  //auto cerokm
+								tmpCerokm = true;
+							}
+							bool listarEsteItem = true;
+							if (campo[4].Trim() == "") {  //url1 vacio
+								listarEsteItem = false;
+							}
+							if (tmpSoloCeroKm && !tmpCerokm) {
+								listarEsteItem = false;
+							}
+							Console.WriteLine("tmpSoloCeroKm:" + tmpSoloCeroKm);
+							Console.WriteLine("tmpCerokm:" + tmpCerokm);
+							if (listarEsteItem) {
+								Console.WriteLine("id:" + campo[8] + ".nombre:" + campo[1] + ".llaves:" + campo[9] + ".cerokm:" + campo[10] + "." + "tmpceroKm:" + tmpCerokm + ".");
+								/*
+								Console.WriteLine("nombre:" + campo[1]);
+								Console.WriteLine("fecha:" + campo[0]);
+								Console.WriteLine("descripcion:" + campo[3]);
+								Console.WriteLine("url4:" + campo[7]);
+								Console.WriteLine("campo9:" + campo[9]);
+								*/
+
 								tmpAutos.Add(new autoClass() {
 									id = Int32.Parse(campo[8]),
 									fecha = campo[0],
@@ -525,10 +559,11 @@ mCargando.Visibility = ViewStates.Invisible;
 									url2 = campo[5],
 									url3 = campo[6],
 									url4 = campo[7],
+									llaves = campo[9],
+									cerokm = tmpCerokm,
 								});
 							}
-							//Console.WriteLine("id:" + campo[8]);
-							//Console.WriteLine("nombre:" + campo[1]);
+
 						}
 						i++;
 					}
@@ -551,7 +586,7 @@ mCargando.Visibility = ViewStates.Invisible;
 			}
 			return retorno;
 		}
-		
+
 		private byte[] GetImageByteArrayFromUrl(string url) {
 			byte[] imageArray = null;
 			using (var webClient = new WebClient()) {
@@ -714,7 +749,7 @@ imageView.SetImageResource(thumbIds[position]);
 return imageView;
 }
 */
-		public  override  View GetView(int position, View convertView, ViewGroup parent) {
+		public override View GetView(int position, View convertView, ViewGroup parent) {
 			View view;
 
 			if (convertView == null) {
@@ -736,9 +771,9 @@ return imageView;
 
 			//var imageBitmap =  utilitarios.GetImageForDisplay(listaDeAutos[position].url1, 150, 150).Result;
 			string tmpUrlAlfa = memoriaInterna.convertirEnAlfaNumerico(listaDeAutos[position].url1);
-			Bitmap imageBitmap = memoriaInterna.LeerImagen(tmpUrlAlfa,25);
+			Bitmap imageBitmap = memoriaInterna.LeerImagen(tmpUrlAlfa, 25);
 			if (imageBitmap != null) {
-			//if (tmpUrlAlfa != "") { 
+				//if (tmpUrlAlfa != "") { 
 
 				//imageView.LayoutParameters = new GridView.LayoutParams(ancho, ancho);
 				//imagen.SetScaleType(ImageView.ScaleType.CenterInside);
@@ -760,7 +795,7 @@ return imageView;
 			imageBitmap = null;
 			//imageBitmap.Recycle();
 
-			
+
 
 
 			return view;

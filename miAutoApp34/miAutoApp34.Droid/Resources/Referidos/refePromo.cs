@@ -90,11 +90,16 @@ namespace miAutoApp34.Droid {
 						memoriaInterna.GuardarImagen(null, "promo.png");
 					}
 					else {
-						Activity.RunOnUiThread(() => {
-							progress.Visibility = ViewStates.Visible;
-							txtPromo.Text = "Cargando promo...";
-							txtPromo.Visibility = ViewStates.Visible;
-						});
+						try {
+							Activity.RunOnUiThread(() => {
+								progress.Visibility = ViewStates.Visible;
+								txtPromo.Text = "Cargando promo...";
+								txtPromo.Visibility = ViewStates.Visible;
+							});
+						}
+						catch (Exception ex) {
+							Console.WriteLine("error: " + ex.Message);
+						}
 						//GUARDA/COMPRIME IMAGEN obtenida desde URL Y LA GUARDA EN CACHE/PREFERENCES
 						/*
 						var arrayImagenWeb = GetImageByteArrayFromUrl(urlPromoPicWeb);
@@ -120,10 +125,15 @@ namespace miAutoApp34.Droid {
 							//tmpCargarDatos.PutString("promoPic", tmpPromoPicString.ToString());
 							tmpCargarDatos.PutString("urlPromoPic", urlPromoPicWeb);
 							tmpCargarDatos.Apply();
-							Activity.RunOnUiThread(() => {
-								progress.Visibility = ViewStates.Invisible;
-								txtPromo.Visibility = ViewStates.Invisible;
-							});
+							try {
+								Activity.RunOnUiThread(() => {
+									progress.Visibility = ViewStates.Invisible;
+									txtPromo.Visibility = ViewStates.Invisible;
+								});
+							}
+							catch (Exception ex) {
+								Console.WriteLine("error: " + ex.Message);
+							}
 						}
 
 						else {
@@ -134,11 +144,14 @@ namespace miAutoApp34.Droid {
 							});
 						}
 					}
+					try { 
 					Activity.RunOnUiThread(() => {
 						//cargarImagenPromoDesdePreferences();
 						cargarImagenPromoDesdeMemoriaInterna();
 					});
-
+					} catch(Exception ex) {
+						Console.WriteLine("Error al cargar la imagenPromo porque se cerro el thread:" + ex.Message);
+					}
 
 				}
 			})).Start();
@@ -316,8 +329,8 @@ namespace miAutoApp34.Droid {
 		}
 		*/
 		public void cargarImagenPromoDesdeMemoriaInterna() {
-			
-			var tmpBitmapPromo = memoriaInterna.LeerImagen("promo.png",80);
+
+			var tmpBitmapPromo = memoriaInterna.LeerImagen("promo.png", 80);
 			if (tmpBitmapPromo != null) {
 				//var imageBytes = Convert.FromBase64String(tmpImagenBase64);
 				//Bitmap bitBorrar = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);

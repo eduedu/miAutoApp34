@@ -6,7 +6,7 @@
     android:padding="20dp"
     android:background="#4d4d4d">
     <TextView
-        android:text="Lorem ipsum"
+        android:text="Consulta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
@@ -26,12 +26,14 @@
         android:id="@+id/space1" />
     <EditText
         android:inputType="textMultiLine"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="140dp"
         android:id="@+id/textConsulta"
+        android:background="@color/colGris4"
+        android:scrollHorizontally="false"
         android:textAlignment="gravity"
-        android:gravity="top|left"
-        android:background="@color/colGris4" />
+        android:gravity="left|top"
+        android:maxLines="20" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

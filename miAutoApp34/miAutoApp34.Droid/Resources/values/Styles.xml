@@ -12,8 +12,12 @@
 
   <style name="Theme.DesignDemo2" parent="Base.Theme.DesignDemo2">
   </style>
-
+  <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+    <item name="colorAccent">#f05059</item>
+    <item name="android:textColorSecondary">#f05059</item>
+  </style>
   <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:actionBarPopupTheme">@style/Theme.YourAppsName.ActionBarPopupTheme</item>
     <item name="colorPrimary">#3e61ad</item>
     <item name="colorPrimaryDark">#3e61ad</item>
     <item name="colorAccent">#f05059</item>
@@ -23,12 +27,16 @@
     <item name="colorPrimaryDark">#4d4d4d</item>
     <item name="colorAccent">#faa41b</item>
   </style>
- 
+
+  
   <style name="Theme.DesignDemo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
   <style name="Theme.DesignDemo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
+ 
+  <style name="Theme.YourAppsName.ActionBarPopupTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:colorBackground">@color/colAzul</item>
+    <item name="android:textColor">@color/colBlanco</item>
+  </style>
     
  <!--
   <style name="RobotoBlack">
@@ -36,4 +44,37 @@
     <item name="android:textStyle">normal</item>
   </style>
  -->
+  <style name="MiAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="android:colorBackground">@color/colAzul</item>
+    <item name="android:textColor">@color/colBlanco</item>
+    <item name="colorPrimary">@color/colAzul</item>
+    <item name="colorAccent">@color/colSalmon</item>
+    <item name="actionBarStyle">@style/AbStyle</item>
+    <item name="actionModeBackground">@color/colAzul</item>
+  </style>
+
+  <style name="AbStyle" parent="Widget.AppCompat.Toolbar">
+    <item name="android:colorBackground">@color/colAzul</item>
+    <item name="android:textColor">@color/colBlanco</item>
+    <item name="elevation">2dp</item>
+    <item name="displayOptions">homeAsUp|showTitle</item>
+    <!--showHome-->
+  </style>
+
+  <style name="menuTheme1" parent="Theme.AppCompat">
+    <item name="android:colorBackground">@color/colAzul</item>
+    <item name="android:background">@color/colBlanco</item>
+    <item name="android:textColor">@color/colGris1</item>
+    <item name="colorAccent">@color/colSalmon</item>
+    <item name="actionBarStyle">@style/AbStyle</item>
+    <!--<item name="android:windowEnterAnimation">@anim/anima1</item>
+    <item name="android:windowExitAnimation">@anim/anima2</item>-->
+  </style>
+  <style name="menuTheme2" parent="Theme.AppCompat">
+    <item name="android:colorBackground">@color/colAzul</item>
+    <item name="android:background">@color/colAzul</item>
+    <item name="android:textColor">@color/colBlanco</item>
+    <item name="colorAccent">@color/colSalmon</item>
+    <item name="actionBarStyle">@style/AbStyle</item>
+  </style>
 </resources>

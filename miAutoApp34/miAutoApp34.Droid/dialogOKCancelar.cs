@@ -163,7 +163,7 @@ namespace miAutoApp34.Droid {
 
 
 
-								/// ACA ME QUEDE!!
+								//ACA ME QUEDE!!
 								//string nombreImagenCache = ;
 								//string tmpImagenBase64 = misDatos.GetString(datosExtra[3], "");
 								//Console.WriteLine("promoPic:" + tmpImagenBase64);
@@ -175,6 +175,7 @@ namespace miAutoApp34.Droid {
 								cargarDatos.PutString("miauto_url1", datosExtra[3]);
 								//cargarDatos.PutString("miauto_foto", tmpImagenBase64);
 								cargarDatos.PutString("miauto_foto", datosExtra[4]);
+								cargarDatos.PutString("miauto_llaves", datosExtra[5]);
 
 
 								/*
@@ -203,6 +204,7 @@ namespace miAutoApp34.Droid {
 								//Activity.StartActivity(miIntent);
 
 								///BORRAR EL RESTO DE LAS IMAGENES DE AUTOS
+								/*
 								//public void BorrarArchivosQueNoSeUsan() {
 								List<string> ListaArchivosDeImagenesEnUso = new List<string>();
 								ListaArchivosDeImagenesEnUso.Add("promo.png");
@@ -236,8 +238,8 @@ namespace miAutoApp34.Droid {
 								Console.WriteLine("TOTAL ARCHIVOS:" + i.ToString());
 								Console.WriteLine("--------------------");
 								//}
-
-
+								*/
+								memoriaInterna.GuardarCambioPreferencesX(2, "");
 								Activity.StartActivity(typeof(mainFragment));
 
 
@@ -266,6 +268,26 @@ namespace miAutoApp34.Droid {
 					})).Start();
 				}
 				//Dismiss();
+				///CERRAR SESION
+				if (mModoBotones==3) {
+					//Toast.MakeText(this.Context, "Cerrando sesión", ToastLength.Long).Show();
+					ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+					ISharedPreferencesEditor cargarDatos = misDatos.Edit();
+					cargarDatos.Clear();
+					cargarDatos.Commit();
+					/*
+					try {
+						memoriaInterna.trimCache(this);
+						// Toast.makeText(this,"onDestroy " ,Toast.LENGTH_LONG).show();
+					}
+					catch (Java.Lang.Exception ex) {
+						// TODO Auto-generated catch block
+						Console.WriteLine(ex.Message.ToString());
+					}
+					*/
+					Activity.StartActivity(typeof(splash));
+					Activity.Finish();
+				}
 			};
 
 			btnCancelar.Click += delegate {

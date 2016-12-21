@@ -15,5 +15,6 @@ namespace miAutoApp34.Droid {
 		public string linea1 { get; set; }
 		public string linea2 { get; set; }
 		public string linea3 { get; set; }
+		//public int personal { get; set; }
 	}
 }

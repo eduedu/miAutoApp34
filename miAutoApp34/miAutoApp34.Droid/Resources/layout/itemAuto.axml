@@ -15,5 +15,6 @@
         android:background="#4D4D4D"
         android:layout_alignBottom="@id/my_image_view"
         android:alpha="0.5"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:gravity="bottom" />
 </RelativeLayout>

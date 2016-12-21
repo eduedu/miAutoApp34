@@ -80,7 +80,7 @@
             android:id="@+id/btnRegistrarse"
             android:text="REGISTRARSE"
             android:layout_width="120dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:layout_height="match_parent"
             android:background="@drawable/btnloginazul"
             android:textColor="#FFFFFF"
@@ -91,7 +91,7 @@
             android:clickable="true"
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:textColor="#FFFFFF"
             android:background="@drawable/btnloginazul" />
     </RelativeLayout>

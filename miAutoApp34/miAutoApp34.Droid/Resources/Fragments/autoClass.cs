@@ -21,5 +21,7 @@ namespace miAutoApp34.Droid {
         public string url2 { get; set; }
         public string url3 { get; set; }
         public string url4 { get; set; }
-    }
+		public string llaves { get; set; }
+		public bool cerokm { get; set; }
+	}
 }

@@ -16,9 +16,12 @@ using Macaw.UIComponents;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
 using Android.Content.PM;
+using System.Threading;
 
 namespace miAutoApp34.Droid {
-	[Activity(Label = "Detalles Auto", Theme = "@style/Theme.DesignDemo")]
+	[Activity(Label = "Detalles Auto", Theme = "@style/Theme.DesignDemo", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+
+
 	//public class fDetallesAuto : Android.App.DialogFragment {
 
 	public class fDetallesAuto : FragmentActivity {
@@ -40,6 +43,8 @@ namespace miAutoApp34.Droid {
 			TextView twDescripcion = FindViewById<TextView>(Resource.Id.twdescripcion);
 			TextView twpreciolabel = FindViewById<TextView>(Resource.Id.twpreciolabel);
 			TextView twprecio = FindViewById<TextView>(Resource.Id.twprecio);
+			TextView twllaveslabel = FindViewById<TextView>(Resource.Id.twllaveslabel);
+			TextView twllaves = FindViewById<TextView>(Resource.Id.twllaves);
 			ImageView circ1 = FindViewById<ImageView>(Resource.Id.circulo1);
 			ImageView circ2 = FindViewById<ImageView>(Resource.Id.circulo2);
 			ImageView circ3 = FindViewById<ImageView>(Resource.Id.circulo3);
@@ -54,9 +59,12 @@ namespace miAutoApp34.Droid {
 			twDescripcion.Typeface = tf2;
 			twpreciolabel.Typeface = tf2;
 			twprecio.Typeface = tf3;
+			twllaveslabel.Typeface = tf2;
+			twllaves.Typeface = tf3;
 			btnQuieroEsteAuto.Typeface = tf3;
 
 			///obtener datos desde el intent
+			string modo = Intent.GetStringExtra("modo") ?? "";
 			string url1 = Intent.GetStringExtra("detalle.url1") ?? "";
 			string url2 = Intent.GetStringExtra("detalle.url2") ?? "";
 			string url3 = Intent.GetStringExtra("detalle.url3") ?? "";
@@ -64,7 +72,8 @@ namespace miAutoApp34.Droid {
 			string titulo = Intent.GetStringExtra("detalle.titulo") ?? "";
 			string descripcion = Intent.GetStringExtra("detalle.descripcion") ?? "";
 			string precio = Intent.GetStringExtra("detalle.precio") ?? "";
-			string detalle_id =     Intent.GetStringExtra("detalle.id") ?? "";
+			string detalle_id = Intent.GetStringExtra("detalle.id") ?? "";
+			string detalle_llaves = Intent.GetStringExtra("detalle.llaves") ?? "";
 			// Use this to return your custom view for this Fragment
 			//View view = inflater.Inflate(Resource.Layout.fDetallesAuto, container, false);
 			//RequestWindowFeature(WindowFeatures.NoTitle);
@@ -74,6 +83,7 @@ namespace miAutoApp34.Droid {
 			twDescripcion.Text = descripcion;
 			twDescripcion.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
 			twprecio.Text = "$ " + precio;
+			twllaves.Text = detalle_llaves;
 
 			//Console.WriteLine("titulo detalle:" + titulo);
 			//Console.WriteLine("id detalle:"+ detalle_id);
@@ -89,18 +99,18 @@ namespace miAutoApp34.Droid {
 				btnQuieroEsteAuto.LayoutParameters.Height = mAltoBoton;
 				btnQuieroEsteAuto.SetTextSize(ComplexUnitType.Px, (float)(mAltoBoton * 0.5));
 
+				twllaves.SetTextSize(ComplexUnitType.Px, (float)(twprecio.TextSize * multiplo));
+				twllaveslabel.SetTextSize(ComplexUnitType.Px, (float)(twpreciolabel.TextSize * multiplo));
 				twprecio.SetTextSize(ComplexUnitType.Px, (float)(twprecio.TextSize * multiplo));
 				twpreciolabel.SetTextSize(ComplexUnitType.Px, (float)(twpreciolabel.TextSize * multiplo));
 				twTitulo.SetTextSize(ComplexUnitType.Px, (float)(twTitulo.TextSize * multiplo));
 				twDescripcion.SetTextSize(ComplexUnitType.Px, (float)(twDescripcion.TextSize * multiplo));
 				//twRegistrados.SetTextSize(ComplexUnitType.Px, (float)(twRegistrados.TextSize * multiplo));
-
 				//twtitulo.Typeface = tf;
-
-
-				Console.WriteLine("cambio altoboton");
-				Console.WriteLine("mAltoboton" + mAltoBoton);
+				//Console.WriteLine("cambio altoboton");
+				//Console.WriteLine("mAltoboton" + mAltoBoton);
 			}
+
 
 			///cambiar tamaño de miAuto
 			string dLinearTitulo = misDatos.GetString("LinearTitulo", "0");
@@ -111,6 +121,23 @@ namespace miAutoApp34.Droid {
 			//miAuto.LayoutParameters.Height = tmpAlto;
 			RelativeLayout relative1 = FindViewById<RelativeLayout>(Resource.Id.relative1);
 			relative1.LayoutParameters.Height = tmpAlto;
+
+			///MODOS
+			if (modo == "desdefCuenta") {
+				//btnQuieroEsteAuto.Text = "Pedir MiAuto";
+				///Desde fCuenta oculta el boton quiero este auto
+				RelativeLayout relative2 = FindViewById<RelativeLayout>(Resource.Id.relative2);
+				btnQuieroEsteAuto.LayoutParameters.Height = 0;
+				btnQuieroEsteAuto.Visibility = ViewStates.Gone;
+				int tmpAlturaDescipcion = twDescripcion.LayoutParameters.Height;
+				//twDescripcion.LayoutParameters.Height = tmpAlturaDescipcion + mAltoBoton;
+				relative2.LayoutParameters.Height = tmpAlturaDescipcion + mAltoBoton + mAltoBoton;
+				twDescripcion.LayoutParameters.Height = tmpAlturaDescipcion + mAltoBoton;
+
+				//Console.WriteLine("mAltoBoton:" + mAltoBoton.ToString());
+				//Console.WriteLine("tmpAlturaDescipcion:" + tmpAlturaDescipcion.ToString());
+				//relative1.LayoutParameters.Height = tmpAlto+mAltoBoton;
+			}
 
 			///Mostrar las imagenes - Carrousel.
 			var pager = FindViewById<ViewPager>(Resource.Id.pager);
@@ -133,6 +160,37 @@ namespace miAutoApp34.Droid {
 				//imageBitmap.Recycle();
 				return tabImagenAuto;
 			});
+			circ2.Visibility = ViewStates.Gone;
+			circ3.Visibility = ViewStates.Gone;
+			circ4.Visibility = ViewStates.Gone;
+			int tmpCantidadDePreviews = 1;
+			if (url2 != "") {
+				tmpCantidadDePreviews++;
+			}
+			if (url3 != "") {
+				tmpCantidadDePreviews++;
+			}
+			if (url4 != "") {
+				tmpCantidadDePreviews++;
+			}
+			switch (tmpCantidadDePreviews) {
+				case 2:
+					circ2.Visibility = ViewStates.Visible;
+					break;
+				case 3:
+					circ2.Visibility = ViewStates.Visible;
+					circ3.Visibility = ViewStates.Visible;
+					break;
+				case 4:
+					circ2.Visibility = ViewStates.Visible;
+					circ3.Visibility = ViewStates.Visible;
+					circ4.Visibility = ViewStates.Visible;
+					break;
+				default:
+					Console.WriteLine("Default case");
+					break;
+			}
+			/*
 			if (url2 == "") {
 				circ2.Visibility = ViewStates.Gone;
 			}
@@ -151,6 +209,7 @@ namespace miAutoApp34.Droid {
 			else {
 				circ4.Visibility = ViewStates.Visible;
 			}
+			*/
 
 			if (url2 != "") {
 				adaptor.AddFragmentView((i, v, b) => {
@@ -199,28 +258,49 @@ namespace miAutoApp34.Droid {
 
 			///FUNCIONES BOTONES
 			btnQuieroEsteAuto.Click += delegate {
-				//valorRespuesta = 0;
-				//Console.WriteLine("-1---VG: OK");
-				//Dismiss();
-				//Toast.MakeText(Activity, mensaje, ToastLength.Short).Show();
-				//base.OnBackPressed();
-
-				//Mensaje Confirmar
-				//variablesGlobales.numeroTemp = campo1.Text.Trim();
-				//preguntar si el numero es correcto
-				Android.App.FragmentTransaction ft = this.FragmentManager.BeginTransaction();
-				//Remove fragment else it will crash as it is already added to backstack
-				Android.App.Fragment prev = this.FragmentManager.FindFragmentByTag("dialogOkElegir");
-				if (prev != null) {
-					ft.Remove(prev);
+				if (modo == "desdefCuenta") {
+					/*
+					//var progressDialog = ProgressDialog.Show(this.BaseContext, "", "Cargando...", true);
+					new System.Threading.Thread(new ThreadStart(delegate {
+						string requeremientos = solicitudesWeb.getVariable("Requerimientos");
+						RunOnUiThread(() => {
+							//progressDialog.Hide();
+							if (requeremientos != "SinConexion") {
+								//Dismiss();
+								Android.App.FragmentTransaction ft = this.FragmentManager.BeginTransaction();
+								Android.App.Fragment prev = this.FragmentManager.FindFragmentByTag("dialogConsulta");
+								if (prev != null) {
+									ft.Remove(prev);
+								}
+								ft.AddToBackStack(null);
+								dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, requeremientos);
+								newFragmentContactar.Show(ft, "dialogConsulta");
+							}
+							else {
+								RunOnUiThread(() => {
+									//Dismiss();
+									Toast.MakeText(Application.Context, "sin conexión", ToastLength.Long).Show();
+								});
+							}
+						});
+					})).Start();
+					*/
 				}
-				ft.AddToBackStack(null);
-				// Create and show the dialog.
-				string tmpNombreArchivoUrl1 = memoriaInterna.convertirEnAlfaNumerico(url1);
-				string datosExtra = detalle_id + "[" + titulo + "[" + precio + "[" + url1+ "[" + tmpNombreArchivoUrl1;
-				//Console.WriteLine(datosExtra);
-				dialogOKCancelarclass newFragmentCorregir = dialogOKCancelarclass.NewInstance(bundle, titulo, "¿Asociar este modelo con tu perfil?", 2, datosExtra);
-				newFragmentCorregir.Show(ft, "dialogOkElegir");
+				else {
+					Android.App.FragmentTransaction ft = this.FragmentManager.BeginTransaction();
+					//Remove fragment else it will crash as it is already added to backstack
+					Android.App.Fragment prev = this.FragmentManager.FindFragmentByTag("dialogOkElegir");
+					if (prev != null) {
+						ft.Remove(prev);
+					}
+					ft.AddToBackStack(null);
+					// Create and show the dialog.
+					string tmpNombreArchivoUrl1 = memoriaInterna.convertirEnAlfaNumerico(url1);
+					string datosExtra = detalle_id + "[" + titulo + "[" + precio + "[" + url1 + "[" + tmpNombreArchivoUrl1+ "[" + detalle_llaves;
+					//Console.WriteLine(datosExtra);
+					dialogOKCancelarclass newFragmentCorregir = dialogOKCancelarclass.NewInstance(bundle, titulo, "¿Asociar este modelo con tu perfil?", 2, datosExtra);
+					newFragmentCorregir.Show(ft, "dialogOkElegir");
+				}
 			};
 			btnVolver.Click += (s, o) => {
 				//base.OnBackPressed();

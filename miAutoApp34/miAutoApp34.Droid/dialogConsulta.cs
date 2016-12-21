@@ -27,7 +27,7 @@ namespace miAutoApp34.Droid {
 
 
 		//public string mensaje;
-		public static dialogConsulta NewInstance(Bundle bundle, String _titulo, String _mensaje,  string _datoExtra = "") {
+		public static dialogConsulta NewInstance(Bundle bundle, String _titulo, String _mensaje, string _datoExtra = "") {
 			dialogConsulta fragment = new dialogConsulta();
 			mensaje = _mensaje;
 			titulo = _titulo;
@@ -48,9 +48,25 @@ namespace miAutoApp34.Droid {
 			Button btnCancelar = view.FindViewById<Button>(Resource.Id.btnCancelar);
 			TextView texto1 = view.FindViewById<TextView>(Resource.Id.textView1);
 			TextView texto2 = view.FindViewById<TextView>(Resource.Id.textView2);
+			TextView textoConsulta = view.FindViewById<TextView>(Resource.Id.textConsulta);
+
+			///Datos
+			ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			string bloqueado = misDatos.GetString("bloqueado", "");
+			string numeroWA = misDatos.GetString("numeroWA", "");
+			btnCancelar.Text = "Cancelar";
+			btnOK.Text = "Enviar";
+
+			if (bloqueado.Trim() == "1") {
+				titulo = "MiAuto Plan";
+				mensaje = "Existe un problema con su cuenta.\nPara más información comuníquese al siguiente número:\n" + numeroWA + "\nMuchas gracias.";
+				btnCancelar.Text = "Ok";
+				btnOK.Visibility = ViewStates.Gone;
+				textoConsulta.Visibility = ViewStates.Gone;
+			}
+
 			texto1.Text = titulo;
 			texto2.Text = mensaje;
-			TextView textoConsulta = view.FindViewById<TextView>(Resource.Id.textConsulta);
 
 			//FUENTES
 			Typeface tf = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-BOLD.TTF");
@@ -63,8 +79,7 @@ namespace miAutoApp34.Droid {
 			btnCancelar.Typeface = tf2;
 			textoConsulta.Typeface = tf2;
 
-			btnCancelar.Text = "Cancelar";
-			btnOK.Text = "Enviar";
+
 
 			//ancho dialog
 			var metrics = Application.Context.Resources.DisplayMetrics;
@@ -73,9 +88,10 @@ namespace miAutoApp34.Droid {
 			///FUNCIONES BOTONES
 			btnOK.Click += delegate {
 				//MODO OK/CORREGIR
+				if (textoConsulta.Text.Trim() != "") {
 					var progressDialog = ProgressDialog.Show(inflater.Context, "", "Procesando Solicitud...", true);
 					new System.Threading.Thread(new ThreadStart(delegate {
-					bool solicitudOK = solicitudesWeb.solicitud("Consulta", false,textoConsulta.Text.Trim());
+						bool solicitudOK = solicitudesWeb.solicitud("Consulta", false, textoConsulta.Text.Trim());
 						//string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
 						//Console.WriteLine("Solicituddddddd: " + solicitudOK.ToString());
 						//Console.WriteLine("0");
@@ -96,7 +112,7 @@ namespace miAutoApp34.Droid {
 								ft.AddToBackStack(null);
 								// Create and show the dialog.
 								//dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
-								dialogOKclass newFragmentContactar = dialogOKclass.NewInstance(null,"Consulta Registrada","Un asesor se comunicará con Usted a la brevedad. \n\n¡Muchas Gracias!");
+								dialogOKclass newFragmentContactar = dialogOKclass.NewInstance(null, "Consulta Registrada", "Un asesor se comunicará con Usted a la brevedad. \n\n¡Muchas Gracias!");
 								//Add fragment
 								newFragmentContactar.Show(ft, "dialogOK100");
 
@@ -110,7 +126,7 @@ namespace miAutoApp34.Droid {
 							}
 						});
 					})).Start();
-				
+				}
 
 			};
 

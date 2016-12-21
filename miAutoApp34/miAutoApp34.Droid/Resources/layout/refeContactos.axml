@@ -51,7 +51,8 @@
         android:textColor="#989898"
         android:inputType="textCapWords|textNoSuggestions"
         android:textCursorDrawable="@null"
-        android:drawableRight="@android:drawable/ic_menu_search" />
+        android:drawableRight="@android:drawable/ic_menu_search"
+        android:hint="(Filtrar)" />
     <Space
         android:layout_width="match_parent"
         android:layout_height="15dp"

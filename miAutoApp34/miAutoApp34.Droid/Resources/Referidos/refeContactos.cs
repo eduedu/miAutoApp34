@@ -32,6 +32,7 @@ namespace miAutoApp34.Droid {
 		ISharedPreferences misDatos;
 		string mNum;
 		string mNya;
+		string mAyudaReferidos;
 
 		public override void OnCreate(Bundle savedInstanceState) {
 			base.OnCreate(savedInstanceState);
@@ -202,17 +203,7 @@ namespace miAutoApp34.Droid {
 					})).Start();
 				}
 				else {
-					FragmentTransaction ft2 = Activity.FragmentManager.BeginTransaction();
-					//Remove fragment else it will crash as it is already added to backstack
-					Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogAyuda1");
-					if (prev != null) {
-						ft2.Remove(prev);
-					}
-					ft2.AddToBackStack(null);
-					// Create and show the dialog.
-					dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Referidos", "Seleccione los Contactos que desee agregar a su Lista de Referidos y presione el botón Agregar (+)");
-					//Add fragment
-					newFragment.Show(ft2, "dialogAyuda1");
+					MostrarAyuda();
 				}
 
 
@@ -236,7 +227,16 @@ namespace miAutoApp34.Droid {
 			filtroText = view.FindViewById<EditText>(Resource.Id.editText1);
 			filtroText.TextChanged += FiltroText_TextChanged;
 
-
+			///DIALOG AYUDA
+			/// Datos
+			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			mAyudaReferidos = misDatos.GetString("ayudaReferidos", "");
+			if (mAyudaReferidos == "1") {
+				MostrarAyuda();
+				ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
+				tmpCargarDatos.PutString("ayudaReferidos", "0");
+				tmpCargarDatos.Apply();
+			}
 
 			return view;
 			// return base.OnCreateView(inflater, container, savedInstanceState);
@@ -253,7 +253,20 @@ namespace miAutoApp34.Droid {
 
 
 		}
-
+		private void MostrarAyuda() {
+			FragmentTransaction ft2 = Activity.FragmentManager.BeginTransaction();
+			//Remove fragment else it will crash as it is already added to backstack
+			Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogAyuda1");
+			if (prev != null) {
+				ft2.Remove(prev);
+			}
+			ft2.AddToBackStack(null);
+			// Create and show the dialog.
+			//dialogAyudaReferidos newFragment = dialogAyudaReferidos.NewInstance(null, "Referidos", "Seleccione los Contactos que desee agregar a su Lista de Referidos y presione el botón Agregar (+)");
+			dialogAyudaReferidos newFragment = dialogAyudaReferidos.NewInstance(null);
+			//Add fragment
+			newFragment.Show(ft2, "dialogAyuda1");
+		}
 
 	}
 }

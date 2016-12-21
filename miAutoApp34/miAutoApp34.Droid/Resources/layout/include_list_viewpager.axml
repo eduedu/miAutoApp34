@@ -20,38 +20,52 @@
     <!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
          style="?android:attr/buttonBarButtonStyle"
       -->
-      <LinearLayout
-        android:id="@+id/LinearTitulo"
+        <RelativeLayout
+            android:id="@+id/LinearTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
             android:gravity="center_vertical">
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:id="@+id/space1" />
+        <!--
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:id="@+id/space1" />
+           -->
             <ImageView
                 android:layout_width="45.5dp"
                 android:layout_height="55.5dp"
                 android:clickable="false"
                 android:background="#0000"
                 android:src="@drawable/logobarra"
-                android:id="@+id/logoBarra" />
-            <Space
-                android:layout_width="7dp"
-                android:layout_height="match_parent"
-                android:id="@+id/space1" />
+                android:id="@+id/logoBarra"
+                android:layout_marginLeft="20dp" />
+        <!--
+    <Space
+        android:layout_width="7dp"
+        android:layout_height="match_parent"
+        android:id="@+id/space1" />
+           -->
             <TextView
                 android:id="@+id/titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:background="#0000"
-                android:text="Mi Auto Plan"
+                android:text="MiAuto Plan"
                 android:textColor="#FFFFFF"
-                android:textSize="18dp" />
-        </LinearLayout>
+                android:textSize="18dp"
+                android:layout_toRightOf="@id/logoBarra"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="7dp" />
+            <ImageView
+                android:src="@drawable/menu"
+                android:layout_width="35dp"
+                android:layout_height="28dp"
+                android:id="@+id/imageMenu"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp" />
+        </RelativeLayout>
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             app:tabGravity="fill"

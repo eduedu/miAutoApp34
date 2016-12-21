@@ -110,11 +110,27 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="20dp">
         <TextView
+            android:id="@+id/twllaveslabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="Llaves: "
+            android:textColor="@color/colAzul"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/twllaves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="12345"
+            android:textColor="@color/colAzul"
+            android:textSize="18dp" />
+        <TextView
             android:id="@+id/twpreciolabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
-            android:text="Precio final   "
+            android:text="/Precio final: "
             android:textColor="@color/colAzul"
             android:textSize="18dp" />
         <TextView
@@ -133,7 +149,8 @@
         android:id="@+id/separador"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" />
-    <RelativeLayout
+  <RelativeLayout
+    android:id="@+id/relative2"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="bottom">
@@ -150,8 +167,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="60dp"
             android:scrollbars="vertical"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:maxLines="10" />
+            android:scrollbarAlwaysDrawVerticalTrack="true" />
         <Button
             android:text="QUIERO ESTE AUTO"
             android:layout_width="match_parent"
