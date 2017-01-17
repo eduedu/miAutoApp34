@@ -41,7 +41,7 @@ namespace miAutoApp34.Droid {
 		TextView twtitulo;
 		TextView tvCconseguiLlaves;
 		TextView tvSolicitar;
-		TextView tvConsulta;
+		TextView tvPedirMiAuto;
 		TextView twTotalLlavesAuto;
 		TextView twTotalReferidos;
 		LinearLayout linearRegistrados;
@@ -121,8 +121,8 @@ namespace miAutoApp34.Droid {
 			//btnllaves.Typeface = fntRegular;
 			tvCconseguiLlaves = view.FindViewById<TextView>(Resource.Id.tvConseguiLlaves);
 			tvSolicitar = view.FindViewById<TextView>(Resource.Id.tvSolicitar);
-			tvConsulta = view.FindViewById<TextView>(Resource.Id.tvConsulta);
-			twTotalLlavesAuto= view.FindViewById<TextView>(Resource.Id.twTotalLlaves);
+			tvPedirMiAuto = view.FindViewById<TextView>(Resource.Id.tvPedirMiAuto);
+			twTotalLlavesAuto = view.FindViewById<TextView>(Resource.Id.twTotalLlaves);
 			linearRegistrados = view.FindViewById<LinearLayout>(Resource.Id.linearRegistrados);
 			twTotalReferidos = view.FindViewById<TextView>(Resource.Id.twTotalReferidos);
 			/*
@@ -149,7 +149,7 @@ btnllaves.SetCompoundDrawables(drawable, null, null, null);
 
 			tvCconseguiLlaves.Typeface = fntCondensedBold;
 			tvSolicitar.Typeface = fntCondensedBold;
-			tvConsulta.Typeface = fntCondensedBold;
+			tvPedirMiAuto.Typeface = fntCondensedBold;
 			twValorLlave.Typeface = fntCondensedBold;
 			//text1b.Typeface = fntCondensedBold;
 			twVencimiento.Typeface = fntCondensedBold;
@@ -485,7 +485,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 				//contactar.SetTextSize(ComplexUnitType.Px, (float)(mAltoBoton * 0.5));
 				tvSolicitar.SetTextSize(ComplexUnitType.Px, (float)(mAltoBoton * 0.55));
 				tvCconseguiLlaves.SetTextSize(ComplexUnitType.Px, (float)(mAltoBoton * 0.55));
-				tvConsulta.SetTextSize(ComplexUnitType.Px, (float)(mAltoBoton * 0.55));
+				tvPedirMiAuto.SetTextSize(ComplexUnitType.Px, (float)(mAltoBoton * 0.55));
 				twValorLlave.SetTextSize(ComplexUnitType.Px, (float)(twValorLlave.TextSize * multiplo));
 				twVencimiento.SetTextSize(ComplexUnitType.Px, (float)(twVencimiento.TextSize * multiplo));
 				text2a.SetTextSize(ComplexUnitType.Px, (float)(text2a.TextSize * multiplo));
@@ -557,7 +557,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 			}
 			return retorno;
 		}
-		public Bitmap circulo(string valor, int medidas, int totalLlaves, string colorArco = "amarillo") {
+		public Bitmap circulo(string valor, string totalLlaves, int medidas, string colorArco = "amarillo") {
 			//Bitmap retorno=null;
 
 			Bitmap bitmap = Bitmap.CreateBitmap(medidas, medidas, Bitmap.Config.Argb8888);
@@ -604,15 +604,26 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 			int tmpCantDeLlaves;
 			//string inputString = "abc";
 			bool parsed = Int32.TryParse(valor, out tmpCantDeLlaves);
-
+			Console.WriteLine("tmpCantDeLlaves:" + tmpCantDeLlaves);
 			if (!parsed) {
+
 				tmpCantDeLlaves = 0;
 			}
+			int tmpTotalLlaves;
+			Console.WriteLine("totalLlaves:" + totalLlaves);
+			bool parsed2 = Int32.TryParse(totalLlaves, out tmpTotalLlaves);
+			if (!parsed2) {
+				tmpTotalLlaves = 0;
+			}
+			//Console.WriteLine("tmpCantDeLlaves:" + tmpCantDeLlaves);
+			Console.WriteLine("tmpTotalLlaves:" + tmpTotalLlaves);
 			//int tmpTotalLlaves = 72;
-			int tmpTotalLlaves = totalLlaves;
+			//int tmpTotalLlaves = totalLlaves;
 			int tmpTotalArco = 360;
-			int tmpArco = tmpCantDeLlaves * tmpTotalArco / tmpTotalLlaves;
-			canvas.DrawArc(rectF, 180, tmpArco, false, p);
+			if (tmpTotalLlaves != 0) {
+				int tmpArco = tmpCantDeLlaves * tmpTotalArco / tmpTotalLlaves;
+				canvas.DrawArc(rectF, 180, tmpArco, false, p);
+			}
 			//imageCanvas.SetImageBitmap(bitmap);
 
 			//p.SetARGB(255, 62, 97, 163);  //azul
@@ -627,7 +638,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 			dIntransferibles = misDatos.GetString("intransferibles", "0");
 			dBloqueado = misDatos.GetString("bloqueado", "");
 			dMisRegistrados = misDatos.GetString("misRegistrados", "");
-			dTotalReferidos= misDatos.GetString("totalReferidos", "");
+			dTotalReferidos = misDatos.GetString("totalReferidos", "");
 			if (dTotalReferidos.Trim() == "") {
 				dTotalReferidos = "00";
 			}
@@ -645,17 +656,27 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 			//dmiauto_id = misDatos.GetString("miauto_id", "");
 			dmiauto_precio = misDatos.GetString("miauto_precio", "");
 			dmiauto_url1 = misDatos.GetString("miauto_url", "");
-			dmiauto_llaves=misDatos.GetString("miauto_llaves", "");
+			dmiauto_llaves = misDatos.GetString("miauto_llaves", "");
 			if (dmiauto_llaves == "") {
 				dmiauto_llaves = "0";
 			}
 		}
 		public void ActualizarInterface() {
 			Bitmap arcoAmarillo = null;
-			arcoAmarillo = circulo(dMisLlaves, mAltoBoton * 4);
+			arcoAmarillo = circulo(dTotalLlaves, dmiauto_llaves, mAltoBoton * 4);
 
 			try {
 				Activity.RunOnUiThread(() => {
+					int tmpMisLlaves = 0;
+					if (Int32.TryParse(dMisLlaves, out tmpMisLlaves)) {
+						if (tmpMisLlaves < 1) {
+							tvPedirMiAuto.Text = "COMPRAR";
+						}
+						else {
+							tvPedirMiAuto.Text = "Pedir MiAuto";
+						}
+					}
+
 					imageCanvas.SetImageBitmap(arcoAmarillo);
 					imageCanvas.LayoutParameters.Height = mAltoBoton * 3;
 					//imageCanvas2.SetImageBitmap(arcoAmarillo);
@@ -677,7 +698,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 					//Console.WriteLine("Alto:"+)
 
 					//Auto
-					twtitulo.Text =dmiauto_titulo;
+					twtitulo.Text = dmiauto_titulo;
 
 				});
 
@@ -801,6 +822,8 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 				cargarDatos.PutString("miauto_url3", datos[5]);
 				cargarDatos.PutString("miauto_url4", datos[6]);
 				cargarDatos.PutString("miauto_llaves", datos[7]);
+				//Console.WriteLine("miauto_titulo" + datos[0]);
+				//Console.WriteLine("miauto_llaves" + datos[7]);
 				cargarDatos.Apply();
 
 				retorno = true;

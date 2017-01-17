@@ -209,16 +209,17 @@ namespace miAutoApp34.Droid {
 			BitmapFactory.DecodeStream(stream, null, options);
 
 			//calcular el tamaño:
-			
+			/*
 			Console.WriteLine("-----------------------");
 			Console.WriteLine("Archivo:" + data.ToString());
 			Console.WriteLine("Alto:" + options.OutHeight);
 			Console.WriteLine("Ancho:" + options.OutWidth);
+			*/
 			//Console.WriteLine("InSampleSize:" + options.InSampleSize);
 			
 			options.InSampleSize = CalculateInSampleSize(options, requestedWidth, requestedHeight);
-			Console.WriteLine("InSampleSize2:" + options.InSampleSize);
-			Console.WriteLine("Ancho Pretendido:" + requestedWidth);
+			//Console.WriteLine("InSampleSize2:" + options.InSampleSize);
+			//Console.WriteLine("Ancho Pretendido:" + requestedWidth);
 
 			//volver a leer y guardar el bitmap con el tamaño deseado
 			stream = context.ContentResolver.OpenInputStream(data);
@@ -251,11 +252,11 @@ namespace miAutoApp34.Droid {
 			DateTime fechaActualizada = fechaOriginal;
 			string dia = fechaActualizada.ToString("dd/MM/yy");
 			string horas = fechaActualizada.ToString("HH:mm");
-			Console.WriteLine("fecha:" + fecha);
+			//Console.WriteLine("fecha:" + fecha);
 			//Console.WriteLine("fecha2:" + fecha2.ToString());
 			//Console.WriteLine("fecha3:" + fecha3);
 			retorno = dia + " " + horas;
-			Console.WriteLine("fecha final:" + retorno);
+			//Console.WriteLine("fecha final:" + retorno);
 			} catch (Exception ex) {
 				retorno = fecha;
 				Console.WriteLine("Error al querer convertir fecha:" + ex.Message);
@@ -277,7 +278,7 @@ namespace miAutoApp34.Droid {
 			tmpCargarDatos.PutString("preCambios", finalCambios);
 			tmpCargarDatos.Apply();
 
-			Console.WriteLine("FINAL CAMBIOS: " + finalCambios);
+			//Console.WriteLine("FINAL CAMBIOS: " + finalCambios);
 		}
 		public static void trimCache(Context context) {
 			try {

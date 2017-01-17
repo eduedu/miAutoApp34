@@ -34,6 +34,11 @@ namespace miAutoApp34.Droid {
 		string mNya;
 		string mAyudaReferidos;
 
+		//variables para controlar la cant de referidos HOY
+		string mFechaReferido;	
+		int contadorReferidosHoy=0;
+		int mRefeMax = 2;
+
 		public override void OnCreate(Bundle savedInstanceState) {
 			base.OnCreate(savedInstanceState);
 
@@ -41,6 +46,10 @@ namespace miAutoApp34.Droid {
 			misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
 			mNum = misDatos.GetString("num", "");
 			mNya = misDatos.GetString("nya", "");
+
+			//variables para controlar la cant de referidos HOY		
+			mFechaReferido = misDatos.GetString("mFechaReferido", "");
+			contadorReferidosHoy = Convert.ToInt32(misDatos.GetString("contadorReferidosHoy", "0")) ;
 
 			// Create your fragment here
 			var phoneuri = ContactsContract.CommonDataKinds.Phone.ContentUri;
@@ -165,18 +174,110 @@ namespace miAutoApp34.Droid {
 
 			/// BOTON AGREGAR
 			btnAgregar.Click += (o, s) => {
+				///controlar que solo se mande X veces x dia
+				/*
+				ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
+				string tmpHoy = DateTime.Now.ToLocalTime().ToString("dd-MM-yyyy");
+
+				Console.WriteLine("tmpHoy:" + tmpHoy);
+				Console.WriteLine("mFechaReferido:" + mFechaReferido);
+				Console.WriteLine("contadorReferidosHoy:" + contadorReferidosHoy);
+				*/
+				//si es fecha nueva, resetear contador
+				/*
+				if (tmpHoy != mFechaReferido) {
+					Console.WriteLine("cambio fechaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+					contadorReferidosHoy = 0;
+					mFechaReferido = tmpHoy;
+					tmpCargarDatos.PutString("mFechaReferido", mFechaReferido);
+					tmpCargarDatos.PutString("contadorReferidosHoy", contadorReferidosHoy.ToString());
+					tmpCargarDatos.Apply();
+				} else {
+					if (contadorReferidosHoy >= mRefeMax) {
+						Console.WriteLine("Alcanzó el máximo de referidos por dia");
+					} else {
+						//CONSULTA WEB
+						contadorReferidosHoy++;
+						Console.WriteLine("Se agregará contacto:"+mContactos[adapterContactos.getSeleccionado()].nombre);
+						Console.WriteLine("itemSeleccionado:"+adapterContactos.getSeleccionado());
+						
+						string textotemp = "";
+						string contactosUrlString = "";
+						foreach (itemContacto tmpContacto in mContactos) {
+							if (tmpContacto.selec == 1) {
+								textotemp = textotemp + tmpContacto.nombre + " \t" + tmpContacto.numero + "\n";
+								contactosUrlString = contactosUrlString + tmpContacto.nombre + "[" + tmpContacto.numero + "]";
+							}
+						}
+						//Console.WriteLine(textotemp);
+						//Console.WriteLine("URLSSS: -" + contactosUrlString + "-");
+						if (contactosUrlString != "") {
+							var progressDialog2 = ProgressDialog.Show(Context, "", "Procesando...", true);
+							new System.Threading.Thread(new ThreadStart(delegate {
+								contactosUrlString = contactosUrlString.Substring(0, contactosUrlString.Length - 1);
+								contactosUrlString = mNya + "[" + mNum + "]" + contactosUrlString;
+								string seAgregaronOk = solicitudesWeb.setReferidos(contactosUrlString);
+								Activity.RunOnUiThread(() => {
+									if (seAgregaronOk == "1") {
+										progressDialog2.Hide();
+										FragmentTransaction ft2 = Activity.FragmentManager.BeginTransaction();
+										//Remove fragment else it will crash as it is already added to backstack
+										Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialog");
+										if (prev != null) {
+											ft2.Remove(prev);
+										}
+										ft2.AddToBackStack(null);
+										// Create and show the dialog.
+										dialogOKrefefidos newFragment = dialogOKrefefidos.NewInstance(null, "Referidos", "Se agregaron los siguientes Contactos a tu lista de Referidos:\n" + textotemp);
+										//Add fragment
+										newFragment.Show(ft2, "dialog");
+
+									}
+								});
+							})).Start();
+						}
+						else {
+							MostrarAyuda();
+						}
+						
+						//sumar contador
+						//almacenar contador y fecha
+						tmpCargarDatos.PutString("mFechaReferido", mFechaReferido);
+						tmpCargarDatos.PutString("contadorReferidosHoy", contadorReferidosHoy.ToString());
+						tmpCargarDatos.Apply();
+
+					}
+				}
+				*/
+
+
+
+
+
 
 				string textotemp = "";
 				string contactosUrlString = "";
 
+				/* ESTO USABA PARA SELECCIONAR VARIOS CONTACTOS A LA VEZ*/
+				/*
 				foreach (itemContacto tmpContacto in mContactos) {
 					if (tmpContacto.selec == 1) {
 						textotemp = textotemp + tmpContacto.nombre + " \t" + tmpContacto.numero + "\n";
 						contactosUrlString = contactosUrlString + tmpContacto.nombre + "[" + tmpContacto.numero + "]";
 					}
 				}
+				*/
+				/*ESTO ES PARA MANDAR UN SOLO CONTACTO*/
+				int tmpIndex = adapterContactos.getSeleccionado();
+				if (tmpIndex != -1) {
+					string tmpNombre = mContactos[tmpIndex].nombre;
+					string tmpNumero = mContactos[tmpIndex].numero;
+					textotemp = tmpNombre + " \t" + tmpNumero + "\n";
+					contactosUrlString = tmpNombre + "[" + tmpNumero + "]";
+				}
+
 				//Console.WriteLine(textotemp);
-				Console.WriteLine("URLSSS: -" + contactosUrlString + "-");
+				//Console.WriteLine("URLSSS: -" + contactosUrlString + "-");
 				if (contactosUrlString != "") {
 					var progressDialog2 = ProgressDialog.Show(Context, "", "Procesando...", true);
 					new System.Threading.Thread(new ThreadStart(delegate {
@@ -184,27 +285,34 @@ namespace miAutoApp34.Droid {
 						contactosUrlString = mNya + "[" + mNum + "]" + contactosUrlString;
 						string seAgregaronOk = solicitudesWeb.setReferidos(contactosUrlString);
 						Activity.RunOnUiThread(() => {
-							if (seAgregaronOk == "1") {
-								progressDialog2.Hide();
-								FragmentTransaction ft2 = Activity.FragmentManager.BeginTransaction();
-								//Remove fragment else it will crash as it is already added to backstack
-								Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialog");
-								if (prev != null) {
-									ft2.Remove(prev);
-								}
-								ft2.AddToBackStack(null);
-								// Create and show the dialog.
-								dialogOKrefefidos newFragment = dialogOKrefefidos.NewInstance(null, "Referidos", "Se agregaron los siguientes Contactos a tu lista de Referidos:\n" + textotemp);
-								//Add fragment
-								newFragment.Show(ft2, "dialog");
-
+							string tmpRespuesta = "";
+							//if (seAgregaronOk == "1") {
+							//	tmpRespuesta = "Se agregaron los siguientes Contactos a tu lista de Referidos:\n" + textotemp;
+							//}
+							//else {
+								//Console.WriteLine("MENSAJE SERVER:" + seAgregaronOk);
+								tmpRespuesta = seAgregaronOk;
+							//}
+							progressDialog2.Hide();
+							FragmentTransaction ft2 = Activity.FragmentManager.BeginTransaction();
+							//Remove fragment else it will crash as it is already added to backstack
+							Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialog");
+							if (prev != null) {
+								ft2.Remove(prev);
 							}
+							ft2.AddToBackStack(null);
+							// Create and show the dialog.
+							dialogOKrefefidos newFragment = dialogOKrefefidos.NewInstance(null, "Referidos", tmpRespuesta);
+							//Add fragment
+							newFragment.Show(ft2, "dialog");
+
 						});
 					})).Start();
 				}
 				else {
 					MostrarAyuda();
 				}
+				
 
 
 			};

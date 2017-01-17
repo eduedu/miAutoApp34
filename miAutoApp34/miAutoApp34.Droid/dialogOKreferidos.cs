@@ -66,8 +66,8 @@ namespace miAutoApp34.Droid {
 				texto2.LayoutParameters.Height = (int)(tmpAlto * 0.55);
 				//texto2.SetTextSize(TypedValue.ComplexToDimension., 35);
 			}
-			Console.WriteLine("Ancho:" + metrics.WidthPixels.ToString());
-			Console.WriteLine("Fuente:" + texto2.TextSize.ToString());
+			//Console.WriteLine("Ancho:" + metrics.WidthPixels.ToString());
+			//Console.WriteLine("Fuente:" + texto2.TextSize.ToString());
 
 			///FUNCIONES BOTONES
 			btnOK.Click += delegate {

@@ -20,6 +20,8 @@ namespace miAutoApp34.Droid {
 		List<itemContacto> allitems;
 		Typeface fnt1;
 
+		int itemSeleccionado=-1;
+
 		public miAdapter(Activity context, int txtViewResourceId, List<itemContacto> items)
 						: base() {
 			this.context = context;
@@ -30,6 +32,9 @@ namespace miAutoApp34.Droid {
 
 		public override long GetItemId(int position) {
 			return position;
+		}
+		public int getSeleccionado() {
+			return itemSeleccionado;
 		}
 		public override itemContacto this[int position] {
 			get { return items[position]; }
@@ -89,11 +94,22 @@ namespace miAutoApp34.Droid {
 			RelativeLayout itemLayout = view.FindViewById<RelativeLayout>(Resource.Id.itemLayout);
 			itemLayout.Tag = position;
 
+
+			///Esto usaba para seleccionar varios a la vez
+			/*
 			if (item.selec == 0) {
 				itemLayout.SetBackgroundResource(Resource.Drawable.refeCustomSelector);
 			}
 			else {
 				itemLayout.SetBackgroundResource(Resource.Drawable.refeSeleccionado);
+			}
+			*/
+
+			if (position == itemSeleccionado) {
+				itemLayout.SetBackgroundResource(Resource.Drawable.refeSeleccionado);
+			}
+			else {
+				itemLayout.SetBackgroundResource(Resource.Drawable.refeCustomSelector);
 			}
 
 			//En la linea siguiente elimino el evento porque sino me da como que hace muchuos clicks.
@@ -114,13 +130,29 @@ namespace miAutoApp34.Droid {
 
 			//Toast.MakeText(context, (int)((RelativeLayout)sender).Tag, ToastLength.Short).Show();
 			int position = (int)((RelativeLayout)sender).Tag;
-			Console.WriteLine(position);
+			
+
+			///Esto usaba para seleccionar varios a la vez
+			/*
 			if (items[position].selec == 0) {
 				items[position].selec = 1;
 			}
 			else {
 				items[position].selec = 0;
 			}
+			*/
+
+			if (position == itemSeleccionado) {
+				//items[position].selec = 1;
+				itemSeleccionado = -1;
+			}
+			else {
+				//items[position].selec = 0;
+				itemSeleccionado = position;
+			}
+
+			//Console.WriteLine("POS:"+position);
+			//Console.WriteLine("ITEM:"+itemSeleccionado);
 			//((View)sender).SetBackgroundResource(Resource.Drawable.refeCustomSelector);
 			this.NotifyDataSetChanged();
 
@@ -133,5 +165,5 @@ namespace miAutoApp34.Droid {
 				}
 		}
 		*/
+		}
 	}
-}

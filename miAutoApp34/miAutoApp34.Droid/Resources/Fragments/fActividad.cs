@@ -46,6 +46,7 @@ namespace miAutoApp34.Droid {
 		string dUrlCompartirMensaje;
 		string miVersion;
 		string nuevaVersion;
+		string dRefeMax;
 
 		public override void OnCreate(Bundle savedInstanceState) {
 			base.OnCreate(savedInstanceState);
@@ -76,7 +77,8 @@ namespace miAutoApp34.Droid {
 			dUrlCompartirImagen = misDatos.GetString("urlCompartirImagen", "");
 			dUrlCompartirMensaje = misDatos.GetString("urlCompartirMensaje", "");
 			miVersion = misDatos.GetString("miVersion", "");
-			nuevaVersion = misDatos.GetString("nuevaVersion", "");
+			nuevaVersion = misDatos.GetString("nuevaVersion", miVersion);
+			dRefeMax = misDatos.GetString("dRefeMax", "");
 
 
 			///REFERENCIAS A CONTROLES//////////////////////////////////////////////////
@@ -292,7 +294,8 @@ namespace miAutoApp34.Droid {
 					tmpCargarDatos.PutString("nuevaVersion", tmpNuevaVersion);
 					tmpCargarDatos.Apply();
 					nuevaVersion = tmpNuevaVersion;
-
+					Console.WriteLine("miVersion:" + miVersion);
+					Console.WriteLine("nuevaVersion:" + nuevaVersion);
 					if ((webCambio[1] != dValorLlave) && !SinConexion) {
 						dValorLlave = webCambio[1];
 						//ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
@@ -348,6 +351,14 @@ namespace miAutoApp34.Droid {
 						dUrlCompartirMensaje = webCambio[8].Trim();
 						//ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
 						tmpCargarDatos.PutString("urlCompartirMensaje", dUrlCompartirMensaje);
+						tmpCargarDatos.Apply();
+					}
+
+					//si cambio la cantidad de referidos permitidos por dia
+					if ((webCambio[10] != dRefeMax) && !SinConexion) {
+						dRefeMax = webCambio[10].Trim();
+						//ISharedPreferencesEditor tmpCargarDatos = misDatos.Edit();
+						tmpCargarDatos.PutString("dRefeMax", dRefeMax);
 						tmpCargarDatos.Apply();
 					}
 

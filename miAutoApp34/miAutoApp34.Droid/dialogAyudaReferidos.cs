@@ -35,20 +35,26 @@ namespace miAutoApp34.Droid {
 			View view = inflater.Inflate(Resource.Layout.dialogAyudaReferidos, container, false);
 			//RequestWindowFeature(WindowFeatures.NoTitle);
 
+			///DATOS
+			ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+			string NoMostrarAyuda = misDatos.GetString("NoMostrarAyuda", "");
+			string dRefeMax = misDatos.GetString("dRefeMax", "");
+
+
 			///REFERENCIAS A CONTROLES
 			Button btnOK = view.FindViewById<Button>(Resource.Id.btnOK);
 			TextView texto1 = view.FindViewById<TextView>(Resource.Id.textView1);
 			TextView texto2 = view.FindViewById<TextView>(Resource.Id.textView2);
 			CheckBox checkBox1 = view.FindViewById<CheckBox>(Resource.Id.checkBox1);
 			string titulo = "Instrucciones";
-			string mensaje = "1) Seleccione los Contactos que desee agregar a su Lista de Referidos \n\n2) Presione el botón Agregar (+)";
+			string mensaje = "1) Seleccione el contacto que desee agregar a su Lista de Referidos \n\n2) Presione el botón Agregar (+)"+
+												"\n\nIMPORTANTE: Puede referir hasta un máximo de "+dRefeMax+" contactos al día."	;
 			texto1.Text = titulo;
 			texto2.Text = mensaje;
 
 			//MOSTRAR U OCULTAR LA AYUDA AL INICIAR
-			ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-			string NoMostrarAyuda = misDatos.GetString("NoMostrarAyuda", "");
-			if(NoMostrarAyuda=="1") {
+
+			if (NoMostrarAyuda=="1") {
 				checkBox1.Checked = true;
 			} else {
 				checkBox1.Checked = false;

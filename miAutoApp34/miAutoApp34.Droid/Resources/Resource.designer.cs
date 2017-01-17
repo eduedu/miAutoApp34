@@ -3436,7 +3436,7 @@ namespace miAutoApp34.Droid
 			public const int tvConseguiLlaves = 2131427550;
 			
 			// aapt resource value: 0x7f0b00d1
-			public const int tvConsulta = 2131427537;
+			public const int tvPedirMiAuto = 2131427537;
 			
 			// aapt resource value: 0x7f0b00d3
 			public const int tvSolicitar = 2131427539;
