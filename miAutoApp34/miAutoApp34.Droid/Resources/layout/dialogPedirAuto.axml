@@ -32,16 +32,16 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_horizontal">
-      <Button
-    android:text="Continuar"
-    android:layout_width="match_parent"
-    android:layout_height="45.0dp"
-    android:id="@+id/btnOK"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/btnloginazul"
-    android:textColor="#FFFFFF"
-    android:layout_weight="1"
-    android:layout_marginRight="5dp" />
+        <Button
+            android:text="Continuar"
+            android:layout_width="match_parent"
+            android:layout_height="45.0dp"
+            android:id="@+id/btnOK"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnloginazul"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" />
         <Button
             android:text="Cancelar"
             android:layout_width="match_parent"
@@ -52,6 +52,5 @@
             android:textColor="#FFFFFF"
             android:layout_weight="1"
             android:layout_marginLeft="5dp" />
-      
     </LinearLayout>
 </LinearLayout>

@@ -270,13 +270,13 @@ namespace miAutoApp34.Droid {
 				/*ESTO ES PARA MANDAR UN SOLO CONTACTO*/
 				int tmpIndex = adapterContactos.getSeleccionado();
 				if (tmpIndex != -1) {
-					string tmpNombre = mContactos[tmpIndex].nombre;
-					string tmpNumero = mContactos[tmpIndex].numero;
+					string tmpNombre = adapterContactos[tmpIndex].nombre;
+					string tmpNumero = adapterContactos[tmpIndex].numero;
 					textotemp = tmpNombre + " \t" + tmpNumero + "\n";
 					contactosUrlString = tmpNombre + "[" + tmpNumero + "]";
 				}
-
-				//Console.WriteLine(textotemp);
+				//Console.WriteLine("tmpIndex:"+ tmpIndex);
+				//Console.WriteLine("textotemp:"+textotemp);
 				//Console.WriteLine("URLSSS: -" + contactosUrlString + "-");
 				if (contactosUrlString != "") {
 					var progressDialog2 = ProgressDialog.Show(Context, "", "Procesando...", true);

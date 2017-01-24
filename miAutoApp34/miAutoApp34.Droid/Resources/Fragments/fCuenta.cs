@@ -355,7 +355,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 			pedirMiAuto.Click += (o, s) => {
 				int tmpLlaves = 0;
 				try {
-					tmpLlaves = Int32.Parse(dTotalLlaves);
+					tmpLlaves = Int32.Parse(dMisLlaves);
 				}
 				catch (Exception ex) {
 					Console.WriteLine("Error con el formato de dTotalLlaves:" + ex.Message);
@@ -363,6 +363,8 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 
 				if (tmpLlaves < 1) {
 					///si no tiene llaves, no puede pedir el auto
+					///COMPRAR EL AUTO
+					/*
 					Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
 					//Remove fragment else it will crash as it is already added to backstack
 					Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("sinLlaves");
@@ -376,6 +378,17 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 					//dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
 					//Add fragment
 					newFragmentMisLlaves.Show(ft, "sinLlaves");
+					*/
+
+					Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+					Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
+					if (prev != null) {
+						ft.Remove(prev);
+					}
+					ft.AddToBackStack(null);
+					string tmpTexto = "Presione CONTINUAR y un asesor lo llamará a la brevedad para iniciar el trámite.";
+					dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, tmpTexto,"Comprar");
+					newFragmentContactar.Show(ft, "dialogConsulta");
 				}
 				else {
 					var progressDialog = ProgressDialog.Show(inflater.Context, "", "Cargando...", true);

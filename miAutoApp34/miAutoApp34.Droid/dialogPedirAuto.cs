@@ -19,17 +19,17 @@ namespace miAutoApp34.Droid {
 		//private static string titulo;
 		//private static string mensaje;
 		private static string requeremientos;
-		private static string AcercaDe;
+		private static string modalidad;
 		//public int valorRespuesta;
 
 
 		//public string mensaje;
-		public static dialogPedirAuto NewInstance(Bundle bundle, string _requeremientos, string _acercaDe = "") {
+		public static dialogPedirAuto NewInstance(Bundle bundle, string _requeremientos, string _modalidad = "") {
 			dialogPedirAuto fragment = new dialogPedirAuto();
 			//mensaje = _mensaje;
 			//titulo = _titulo;
 			requeremientos = _requeremientos;
-			AcercaDe = _acercaDe;
+			modalidad = _modalidad;
 			fragment.Arguments = bundle;
 			//string mensaje=_mensaje;
 			return fragment;
@@ -49,14 +49,20 @@ namespace miAutoApp34.Droid {
 			TextView texto2 = view.FindViewById<TextView>(Resource.Id.textView2);
 			texto2.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
 			//texto1.Text = titulo;
-			if (AcercaDe == "") {
+			if (modalidad == "") {
 				texto1.Text = "Requerimientos";
 			}
-			if (AcercaDe == "AcercaDe") {
+			if (modalidad == "AcercaDe") {
 				texto1.Text = "Sobre MiAuto Plan";
 				btnOK.Visibility = ViewStates.Gone;
 				btnCancelar.Text = "Ok";
 			}
+			if (modalidad == "Comprar") {
+				texto1.Text = "Comprar Plan";
+				//btnOK.Visibility = ViewStates.Gone;
+				//btnCancelar.Text = "Continuar";
+			}
+
 			texto2.Text = requeremientos;
 			
 
@@ -93,7 +99,15 @@ namespace miAutoApp34.Droid {
 			btnOK.Click += delegate {
 				var progressDialog = ProgressDialog.Show(inflater.Context, "", "Procesando Solicitud...", true);
 				new System.Threading.Thread(new ThreadStart(delegate {
-					bool solicitudOK = solicitudesWeb.solicitud("Pedir Auto", false, "miauto_titulo");
+					string tmpAsunto="";
+					if (modalidad == "") {
+						tmpAsunto = "Pedir Auto";
+					}
+					if (modalidad == "Comprar") {
+						tmpAsunto = "COMPRAR";
+					}
+
+					bool solicitudOK = solicitudesWeb.solicitud(tmpAsunto, false, "miauto_titulo");
 					//string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
 					//Console.WriteLine("Solicituddddddd: " + solicitudOK.ToString());
 					//Console.WriteLine("0");
