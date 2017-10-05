@@ -92,7 +92,8 @@ namespace miAutoApp34.Droid {
 			//si tenia cargado, leer el id del auto y buscar esos datos en BD de autos.
 			//cargar esos datos en preferences (id, nombre, precio, url1 y descargar la imagen fotoauto
 			//modulo en onResume de fcuenta que lea los datos d ela web del auto, para controlar q estan actualizados
-			if (dmiauto_id != "") {
+			if (dmiauto_id.ToString().Trim() != "" || dmiauto_id.ToString().Trim() != "0")
+            {
 				datoconAuto = dmiauto_id;
 			}
 

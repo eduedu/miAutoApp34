@@ -115,7 +115,7 @@
                 android:textColor="#3d61ad"
                 android:textSize="18dp" />
             <TextView
-                android:text="(Ejemplo: 3794555555)"
+                android:text="(Sin 0 y sin 15)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView32"
@@ -123,7 +123,7 @@
                 android:textColor="#4d4d4d"
                 android:textSize="16dp"
                 android:paddingRight="15dp"
-                android:gravity="right" />
+                android:gravity="left" />
         </LinearLayout>
         <EditText
             android:layout_width="match_parent"
@@ -135,7 +135,8 @@
             android:textSize="24dp"
             android:textColor="#989898"
             android:inputType="number"
-            android:textCursorDrawable="@null" />
+            android:textCursorDrawable="@null"
+            android:maxLength="10" />
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp"

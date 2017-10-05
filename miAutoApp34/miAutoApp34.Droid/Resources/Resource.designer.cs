@@ -2460,136 +2460,142 @@ namespace miAutoApp34.Droid
 			public const int iconosms1 = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int iconousuario = 2130837660;
+			public const int iconotelefono = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int iconowhatsapp1 = 2130837661;
+			public const int iconotelefono2 = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int iconowhatsapp2 = 2130837662;
+			public const int iconousuario = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int info = 2130837663;
+			public const int iconowhatsapp1 = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int llaveicono = 2130837664;
+			public const int iconowhatsapp2 = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int llaveicono2 = 2130837665;
+			public const int info = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int llaveicono3 = 2130837666;
+			public const int llaveicono = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int llaveicono4 = 2130837667;
+			public const int llaveicono2 = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int llaveiconob = 2130837668;
+			public const int llaveicono3 = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int logo1 = 2130837669;
+			public const int llaveicono4 = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int logoBarra = 2130837670;
+			public const int llaveiconob = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int logout1 = 2130837671;
+			public const int logo1 = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int lupa = 2130837672;
+			public const int logoBarra = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int lupa2 = 2130837673;
+			public const int logout1 = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int lupa3 = 2130837674;
+			public const int lupa = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int magnify = 2130837675;
+			public const int lupa2 = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int menu = 2130837676;
+			public const int lupa3 = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int messenger_bubble_large_blue = 2130837677;
+			public const int magnify = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int messenger_bubble_large_white = 2130837678;
+			public const int menu = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int messenger_bubble_small_blue = 2130837679;
+			public const int messenger_bubble_large_blue = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int messenger_bubble_small_white = 2130837680;
+			public const int messenger_bubble_large_white = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int messenger_button_blue_bg_round = 2130837681;
+			public const int messenger_bubble_small_blue = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int messenger_button_blue_bg_selector = 2130837682;
+			public const int messenger_bubble_small_white = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int messenger_button_send_round_shadow = 2130837683;
+			public const int messenger_button_blue_bg_round = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int messenger_button_white_bg_round = 2130837684;
+			public const int messenger_button_blue_bg_selector = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int messenger_button_white_bg_selector = 2130837685;
+			public const int messenger_button_send_round_shadow = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int miprogressbar = 2130837686;
-			
-			// aapt resource value: 0x7f0200c7
-			public const int notification_template_icon_bg = 2130837703;
+			public const int messenger_button_white_bg_round = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int refeCustomSelector = 2130837687;
+			public const int messenger_button_white_bg_selector = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int refeSeleccionado = 2130837688;
+			public const int miprogressbar = 2130837688;
+			
+			// aapt resource value: 0x7f0200c9
+			public const int notification_template_icon_bg = 2130837705;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int renglon = 2130837689;
+			public const int refeCustomSelector = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int renglon2colores = 2130837690;
+			public const int refeSeleccionado = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int renglonazul = 2130837691;
+			public const int renglon = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int roundmask = 2130837692;
+			public const int renglon2colores = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int separadorHorizontal = 2130837693;
+			public const int renglonazul = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int sepboton = 2130837694;
+			public const int roundmask = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int sin_auto = 2130837695;
+			public const int separadorHorizontal = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int slider0 = 2130837696;
+			public const int sepboton = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int slider1 = 2130837697;
+			public const int sin_auto = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int slider2 = 2130837698;
+			public const int slider0 = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int slider_blt_grn = 2130837699;
+			public const int slider1 = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int slider_blt_trans = 2130837700;
+			public const int slider2 = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int splash2 = 2130837701;
+			public const int slider_blt_grn = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int support00 = 2130837702;
+			public const int slider_blt_trans = 2130837702;
+			
+			// aapt resource value: 0x7f0200c7
+			public const int splash2 = 2130837703;
+			
+			// aapt resource value: 0x7f0200c8
+			public const int support00 = 2130837704;
 			
 			static Drawable()
 			{
@@ -2604,14 +2610,11 @@ namespace miAutoApp34.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f0b011f
+			public const int Image = 2131427615;
+			
 			// aapt resource value: 0x7f0b0120
-			public const int Image = 2131427616;
-			
-			// aapt resource value: 0x7f0b0121
-			public const int Image2 = 2131427617;
-			
-			// aapt resource value: 0x7f0b0104
-			public const int Layout2 = 2131427588;
+			public const int Image2 = 2131427616;
 			
 			// aapt resource value: 0x7f0b00a1
 			public const int LinearMain = 2131427489;
@@ -2619,17 +2622,17 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b0085
 			public const int LinearTitulo = 2131427461;
 			
+			// aapt resource value: 0x7f0b0121
+			public const int Text = 2131427617;
+			
 			// aapt resource value: 0x7f0b0122
-			public const int Text = 2131427618;
+			public const int Text1 = 2131427618;
 			
 			// aapt resource value: 0x7f0b0123
-			public const int Text1 = 2131427619;
+			public const int Text2 = 2131427619;
 			
-			// aapt resource value: 0x7f0b0124
-			public const int Text2 = 2131427620;
-			
-			// aapt resource value: 0x7f0b010e
-			public const int action0 = 2131427598;
+			// aapt resource value: 0x7f0b010d
+			public const int action0 = 2131427597;
 			
 			// aapt resource value: 0x7f0b0071
 			public const int action_bar = 2131427441;
@@ -2655,8 +2658,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b0072
 			public const int action_context_bar = 2131427442;
 			
-			// aapt resource value: 0x7f0b0112
-			public const int action_divider = 2131427602;
+			// aapt resource value: 0x7f0b0111
+			public const int action_divider = 2131427601;
 			
 			// aapt resource value: 0x7f0b0003
 			public const int action_menu_divider = 2131427331;
@@ -2709,8 +2712,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b003f
 			public const int box_count = 2131427391;
 			
-			// aapt resource value: 0x7f0b0126
-			public const int btnAgregar = 2131427622;
+			// aapt resource value: 0x7f0b0125
+			public const int btnAgregar = 2131427621;
 			
 			// aapt resource value: 0x7f0b00a6
 			public const int btnCancelar = 2131427494;
@@ -2724,29 +2727,29 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00aa
 			public const int btnCopiarNumero = 2131427498;
 			
+			// aapt resource value: 0x7f0b011a
+			public const int btnFBCompartir = 2131427610;
+			
 			// aapt resource value: 0x7f0b011b
-			public const int btnFBCompartir = 2131427611;
+			public const int btnFBMensaje = 2131427611;
 			
-			// aapt resource value: 0x7f0b011c
-			public const int btnFBMensaje = 2131427612;
-			
-			// aapt resource value: 0x7f0b0101
-			public const int btnFacebook = 2131427585;
+			// aapt resource value: 0x7f0b0105
+			public const int btnFacebook = 2131427589;
 			
 			// aapt resource value: 0x7f0b00e2
 			public const int btnFlecha = 2131427554;
 			
-			// aapt resource value: 0x7f0b0106
-			public const int btnIngresar = 2131427590;
+			// aapt resource value: 0x7f0b0103
+			public const int btnIngresar = 2131427587;
 			
-			// aapt resource value: 0x7f0b011e
-			public const int btnMail = 2131427614;
+			// aapt resource value: 0x7f0b011d
+			public const int btnMail = 2131427613;
 			
 			// aapt resource value: 0x7f0b00a0
 			public const int btnOK = 2131427488;
 			
-			// aapt resource value: 0x7f0b0107
-			public const int btnOlvidoContrasena = 2131427591;
+			// aapt resource value: 0x7f0b0104
+			public const int btnOlvidoContrasena = 2131427588;
 			
 			// aapt resource value: 0x7f0b00b5
 			public const int btnPromociones = 2131427509;
@@ -2754,17 +2757,17 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00f2
 			public const int btnQuieroEsteAuto = 2131427570;
 			
-			// aapt resource value: 0x7f0b0105
-			public const int btnRegistrarse = 2131427589;
+			// aapt resource value: 0x7f0b0106
+			public const int btnRegistrarse = 2131427590;
 			
-			// aapt resource value: 0x7f0b011f
-			public const int btnSMS = 2131427615;
+			// aapt resource value: 0x7f0b011e
+			public const int btnSMS = 2131427614;
 			
 			// aapt resource value: 0x7f0b00e1
 			public const int btnVolver = 2131427553;
 			
-			// aapt resource value: 0x7f0b011d
-			public const int btnWhatsApp = 2131427613;
+			// aapt resource value: 0x7f0b011c
+			public const int btnWhatsApp = 2131427612;
 			
 			// aapt resource value: 0x7f0b00dc
 			public const int btnllaves = 2131427548;
@@ -2790,8 +2793,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b005b
 			public const int buttonPanel = 2131427419;
 			
-			// aapt resource value: 0x7f0b010f
-			public const int cancel_action = 2131427599;
+			// aapt resource value: 0x7f0b010e
+			public const int cancel_action = 2131427598;
 			
 			// aapt resource value: 0x7f0b008d
 			public const int cancel_button = 2131427469;
@@ -2814,8 +2817,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b0069
 			public const int checkbox = 2131427433;
 			
-			// aapt resource value: 0x7f0b0115
-			public const int chronometer = 2131427605;
+			// aapt resource value: 0x7f0b0114
+			public const int chronometer = 2131427604;
 			
 			// aapt resource value: 0x7f0b00e7
 			public const int circulo1 = 2131427559;
@@ -2910,14 +2913,14 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int display_always = 2131427396;
 			
-			// aapt resource value: 0x7f0b0108
-			public const int drawer_layout = 2131427592;
+			// aapt resource value: 0x7f0b0107
+			public const int drawer_layout = 2131427591;
+			
+			// aapt resource value: 0x7f0b0101
+			public const int editText1 = 2131427585;
 			
 			// aapt resource value: 0x7f0b0102
-			public const int editText1 = 2131427586;
-			
-			// aapt resource value: 0x7f0b0103
-			public const int editText2 = 2131427587;
+			public const int editText2 = 2131427586;
 			
 			// aapt resource value: 0x7f0b012b
 			public const int editText3 = 2131427627;
@@ -2934,8 +2937,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b001e
 			public const int end = 2131427358;
 			
-			// aapt resource value: 0x7f0b011a
-			public const int end_padder = 2131427610;
+			// aapt resource value: 0x7f0b0119
+			public const int end_padder = 2131427609;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int enterAlways = 2131427365;
@@ -3009,14 +3012,14 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00d0
 			public const int imageView5 = 2131427536;
 			
-			// aapt resource value: 0x7f0b0127
-			public const int imagenPromo = 2131427623;
+			// aapt resource value: 0x7f0b0126
+			public const int imagenPromo = 2131427622;
 			
 			// aapt resource value: 0x7f0b00bf
 			public const int imlupa = 2131427519;
 			
-			// aapt resource value: 0x7f0b0119
-			public const int info = 2131427609;
+			// aapt resource value: 0x7f0b0118
+			public const int info = 2131427608;
 			
 			// aapt resource value: 0x7f0b0042
 			public const int inline = 2131427394;
@@ -3024,17 +3027,17 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b004a
 			public const int intType = 2131427402;
 			
+			// aapt resource value: 0x7f0b0108
+			public const int item1 = 2131427592;
+			
 			// aapt resource value: 0x7f0b0109
-			public const int item1 = 2131427593;
+			public const int item2 = 2131427593;
 			
 			// aapt resource value: 0x7f0b010a
-			public const int item2 = 2131427594;
+			public const int item3 = 2131427594;
 			
 			// aapt resource value: 0x7f0b010b
-			public const int item3 = 2131427595;
-			
-			// aapt resource value: 0x7f0b010c
-			public const int item4 = 2131427596;
+			public const int item4 = 2131427595;
 			
 			// aapt resource value: 0x7f0b00fc
 			public const int itemLayout = 2131427580;
@@ -3060,11 +3063,11 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b012d
 			public const int linboton = 2131427629;
 			
-			// aapt resource value: 0x7f0b0113
-			public const int line1 = 2131427603;
+			// aapt resource value: 0x7f0b0112
+			public const int line1 = 2131427602;
 			
-			// aapt resource value: 0x7f0b0117
-			public const int line3 = 2131427607;
+			// aapt resource value: 0x7f0b0116
+			public const int line3 = 2131427606;
 			
 			// aapt resource value: 0x7f0b00fd
 			public const int linea1 = 2131427581;
@@ -3099,6 +3102,9 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00d4
 			public const int linearLayout6 = 2131427540;
 			
+			// aapt resource value: 0x7f0b0100
+			public const int linearLayoutDatos = 2131427584;
+			
 			// aapt resource value: 0x7f0b00c3
 			public const int linearRegistrados = 2131427523;
 			
@@ -3108,8 +3114,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int listMode = 2131427342;
 			
-			// aapt resource value: 0x7f0b0125
-			public const int listView1 = 2131427621;
+			// aapt resource value: 0x7f0b0124
+			public const int listView1 = 2131427620;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int list_item = 2131427416;
@@ -3117,11 +3123,11 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b0086
 			public const int logoBarra = 2131427462;
 			
-			// aapt resource value: 0x7f0b0111
-			public const int media_actions = 2131427601;
+			// aapt resource value: 0x7f0b0110
+			public const int media_actions = 2131427600;
 			
-			// aapt resource value: 0x7f0b010d
-			public const int messenger_send_button = 2131427597;
+			// aapt resource value: 0x7f0b010c
+			public const int messenger_send_button = 2131427596;
 			
 			// aapt resource value: 0x7f0b001f
 			public const int middle = 2131427359;
@@ -3186,8 +3192,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00bb
 			public const int progressBar1 = 2131427515;
 			
-			// aapt resource value: 0x7f0b0128
-			public const int progressBar11 = 2131427624;
+			// aapt resource value: 0x7f0b0127
+			public const int progressBar11 = 2131427623;
 			
 			// aapt resource value: 0x7f0b008c
 			public const int progress_bar = 2131427468;
@@ -3306,8 +3312,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b009e
 			public const int space1 = 2131427486;
 			
-			// aapt resource value: 0x7f0b0100
-			public const int space2 = 2131427584;
+			// aapt resource value: 0x7f0b0129
+			public const int space2 = 2131427625;
 			
 			// aapt resource value: 0x7f0b00f4
 			public const int space3 = 2131427572;
@@ -3345,8 +3351,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b0033
 			public const int start = 2131427379;
 			
-			// aapt resource value: 0x7f0b0110
-			public const int status_bar_latest_event_content = 2131427600;
+			// aapt resource value: 0x7f0b010f
+			public const int status_bar_latest_event_content = 2131427599;
 			
 			// aapt resource value: 0x7f0b007c
 			public const int submit_area = 2131427452;
@@ -3360,11 +3366,11 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00b6
 			public const int temp = 2131427510;
 			
-			// aapt resource value: 0x7f0b0118
-			public const int text = 2131427608;
+			// aapt resource value: 0x7f0b0117
+			public const int text = 2131427607;
 			
-			// aapt resource value: 0x7f0b0116
-			public const int text2 = 2131427606;
+			// aapt resource value: 0x7f0b0115
+			public const int text2 = 2131427605;
 			
 			// aapt resource value: 0x7f0b00a8
 			public const int textConsulta = 2131427496;
@@ -3411,8 +3417,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00ab
 			public const int textViewWA = 2131427499;
 			
-			// aapt resource value: 0x7f0b0114
-			public const int time = 2131427604;
+			// aapt resource value: 0x7f0b0113
+			public const int time = 2131427603;
 			
 			// aapt resource value: 0x7f0b005a
 			public const int title = 2131427418;
@@ -3489,8 +3495,8 @@ namespace miAutoApp34.Droid
 			// aapt resource value: 0x7f0b00a3
 			public const int txtNueva = 2131427491;
 			
-			// aapt resource value: 0x7f0b0129
-			public const int txtPromo = 2131427625;
+			// aapt resource value: 0x7f0b0128
+			public const int txtPromo = 2131427624;
 			
 			// aapt resource value: 0x7f0b00a5
 			public const int txtRepetir = 2131427493;

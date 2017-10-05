@@ -81,8 +81,9 @@ namespace miAutoApp34.Droid {
 			TextView miTexto1 = FindViewById<TextView>(Resource.Id.textView1);
 			campo1 = FindViewById<EditText>(Resource.Id.editText1);
 			campo2 = FindViewById<EditText>(Resource.Id.editText2);
-			ImageButton btnFacebook = FindViewById<ImageButton>(Resource.Id.btnFacebook);
-			Button btnRegistrarse = FindViewById<Button>(Resource.Id.btnRegistrarse);
+            //ImageButton btnFacebook = FindViewById<ImageButton>(Resource.Id.btnFacebook);
+            LinearLayout btnFacebook = FindViewById<LinearLayout>(Resource.Id.btnFacebook);
+            Button btnRegistrarse = FindViewById<Button>(Resource.Id.btnRegistrarse);
 			Button btnIngresar = FindViewById<Button>(Resource.Id.btnIngresar);
 			btnOlvidoContrasena = FindViewById<Button>(Resource.Id.btnOlvidoContrasena);
 

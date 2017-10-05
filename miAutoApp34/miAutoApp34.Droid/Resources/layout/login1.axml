@@ -13,103 +13,195 @@
         android:layout_width="match_parent"
         android:layout_height="173.0dp"
         android:layout_marginBottom="0.0dp" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:id="@+id/space2" />
-    <ImageButton
-        android:id="@+id/btnFacebook"
+<!--<ImageButton
+        android:id="@+id/btnfacebook"
         android:layout_width="298dp"
         android:layout_height="57dp"
         android:clickable="true"
-        android:background="@drawable/botonfb" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/space3" />
-    <TextView
-        android:text="O CON SU NÚMERO DE TELÉFONO"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView1"
-        android:textColor="#6d6e70"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="17dp" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:id="@+id/space3" />
-    <EditText
-        android:inputType="number"
+        android:background="@drawable/botonfb" />-->
+<!--<LinearLayout
+        android:id="@+id/btnTelefono"
+        android:orientation="horizontal"
         android:layout_width="285dp"
-        android:layout_height="44dp"
-        android:id="@+id/editText1"
-        android:textColor="#4d4d4d"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginBottom="0.0dp"
-        android:textSize="25dp"
-        android:hint="Número de teléfono"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:textColorHint="#989898"
-        android:background="@drawable/renglon" />
-    <EditText
-        android:inputType="textPassword"
-        android:layout_width="285dp"
-        android:layout_height="44dp"
-        android:id="@+id/editText2"
-        android:textColor="#4d4d4d"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginBottom="0.0dp"
-        android:textSize="25dp"
-        android:hint="Contraseña"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:textColorHint="#989898"
-        android:background="@drawable/renglon" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:id="@+id/space3" />
-    <RelativeLayout
-        android:layout_width="290.0dp"
-        android:layout_height="45dp"
-        android:id="@+id/Layout2">
-        <Button
-            android:id="@+id/btnRegistrarse"
-            android:text="REGISTRARSE"
-            android:layout_width="120dp"
-            android:layout_alignParentLeft="true"
+        android:layout_height="55dp"
+        android:gravity="left"
+        android:clickable="true"
+        android:background="#6d6e70"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp">
+        <ImageView
+            android:src="@drawable/iconotelefono2"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
-            android:background="@drawable/btnloginazul"
-            android:textColor="#FFFFFF"
-            android:clickable="true" />
+            android:id="@+id/imageView1"
+            android:layout_marginRight="0.0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="7dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:id="@+id/textViewWA"
+                android:text="NÚMERO DE TELÉFONO"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="center" />
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView1"
+                android:layout_marginRight="0.0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
+    </LinearLayout>-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutDatos"
+        android:gravity="center"
+        android:visibility="visible">
+        <EditText
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText1"
+            android:textColor="#4d4d4d"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="0.0dp"
+            android:textSize="22dp"
+            android:hint="Número de Teléfono"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:textColorHint="#989898"
+            android:background="@drawable/renglon" />
+        <EditText
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText2"
+            android:textColor="#4d4d4d"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="0.0dp"
+            android:textSize="22dp"
+            android:hint="Contraseña"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:textColorHint="#989898"
+            android:background="@drawable/renglon" />
+    <!--<LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:id="@+id/Layout2">-->
+    <!--android:layout_alignParentLeft="true"-->
         <Button
             android:id="@+id/btnIngresar"
             android:text="INGRESAR"
             android:clickable="true"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:textColor="#FFFFFF"
-            android:background="@drawable/btnloginazul" />
-    </RelativeLayout>
-    <Space
+            android:background="@drawable/btnloginazul"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginTop="5dp" />
+        <Button
+            android:id="@+id/btnOlvidoContrasena"
+            android:text="¿Olvidó la contraseña?"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="#6d6e70"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:background="#00FFFFFF"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    <!--android:layout_alignParentRight="true"-->
+    <!--</LinearLayout>-->
+        <TextView
+            android:text="O CON SU NÚMERO DE TELÉFONO"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView1"
+            android:textColor="#006d6e70"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:id="@+id/space1" />
-    <Button
-        android:id="@+id/btnOlvidoContrasena"
-        android:text="¿Olvidó la contraseña?"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/btnFacebook"
+        android:orientation="horizontal"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:gravity="left"
         android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:background="#00FFFFFF"
-        android:textColor="#989898"
-        android:textSize="17dp" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:id="@+id/space1" />
+        android:background="#3E61AD"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp">
+        <ImageView
+            android:src="@drawable/iconofacebook1"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1"
+            android:layout_marginRight="0.0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:id="@+id/textViewWA"
+                android:text="INGRESAR CON FACEBOOK"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:background="#6d6e70" />
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:text="REGISTRARSE"
+        android:clickable="true"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:textColor="#FFFFFF"
+        android:background="#6D6E70"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="16dp" />
 </LinearLayout>

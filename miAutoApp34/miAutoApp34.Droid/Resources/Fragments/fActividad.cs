@@ -362,9 +362,11 @@ namespace miAutoApp34.Droid {
 						tmpCargarDatos.Apply();
 					}
 
-					//comparo bd web con bd interna:
-					//si el cambio fue en NOTICIAS:
-					if ((webCambio[0] != preCambio[0]) && !SinConexion) {
+
+
+                    //comparo bd web con bd interna:
+                    //si el cambio fue en NOTICIAS:
+                    if ((webCambio[0] != preCambio[0]) && !SinConexion) {
 
 						Console.WriteLine("Hubo cambios en noticias");
 
