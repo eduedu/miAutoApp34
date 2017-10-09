@@ -85,15 +85,6 @@ namespace miAutoApp34.Droid
             miNumero = misDatos.GetString("num", "");
             dmiauto_id = misDatos.GetString("miauto_id", "");
             ActualizarDatos();
-            /*
-			dmiauto_titulo = misDatos.GetString("miauto_titulo", "");
-			dmiauto_precio = misDatos.GetString("miauto_precio", "");
-			dmiauto_url1 = misDatos.GetString("miauto_url", "");
-			*/
-            //dMisLlaves = misDatos.GetString("misLlaves", "");
-            //dMisRefereidos = misDatos.GetString("misReferidos", "");
-            //dValorLlave = misDatos.GetString("valorLlave", "");
-
 
 
             ///CONTROLES//////////////////
@@ -129,20 +120,20 @@ namespace miAutoApp34.Droid
             twTotalLlavesAuto = view.FindViewById<TextView>(Resource.Id.twTotalLlaves);
             linearRegistrados = view.FindViewById<LinearLayout>(Resource.Id.linearRegistrados);
             twTotalReferidos = view.FindViewById<TextView>(Resource.Id.twTotalReferidos);
-            /*
-Drawable drawable = Context.GetDrawable(Resource.Drawable.llaveiconob);
-var metrics = Resources.DisplayMetrics;
-//var widthInDp = ConvertPixelsToDp(metrics.WidthPixels);
-//var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
-int altoBoton = (int)(metrics.HeightPixels * 0.05);
-//Console.WriteLine("77777777777777777777777: " + altoBoton);
-//drawable.SetBounds(0, 0, (int)(btnllaves.Height * 0.5),(int)(btnllaves.Height * 0.5));
-drawable.SetBounds(0, 0, altoBoton, altoBoton);
-ScaleDrawable sd = new ScaleDrawable(drawable, 0, 10f, 10f);
-//btnllaves.setCompoundDrawables(drawable, null, null, null);
-btnllaves.SetCompoundDrawables(drawable, null, null, null);
-			//btnllaves.Text = "hola";
-			*/
+
+            //Drawable drawable = Context.GetDrawable(Resource.Drawable.llaveiconob);
+            //var metrics = Resources.DisplayMetrics;
+            ////var widthInDp = ConvertPixelsToDp(metrics.WidthPixels);
+            ////var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
+            //int altoBoton = (int)(metrics.HeightPixels * 0.05);
+            ////Console.WriteLine("77777777777777777777777: " + altoBoton);
+            ////drawable.SetBounds(0, 0, (int)(btnllaves.Height * 0.5),(int)(btnllaves.Height * 0.5));
+            //drawable.SetBounds(0, 0, altoBoton, altoBoton);
+            //ScaleDrawable sd = new ScaleDrawable(drawable, 0, 10f, 10f);
+            ////btnllaves.setCompoundDrawables(drawable, null, null, null);
+            //btnllaves.SetCompoundDrawables(drawable, null, null, null);
+            //			//btnllaves.Text = "hola";
+
 
             //FUENTES
             Typeface tf = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-BOLD.TTF");
@@ -168,11 +159,11 @@ btnllaves.SetCompoundDrawables(drawable, null, null, null);
             twRegistrados.Typeface = tf3;
             twTotalLlavesAuto.Typeface = fntCondensedRegular;
             twLlaves.Typeface = fntCondensedBold;
-            /*ScaleDrawable sd = new ScaleDrawable(Resource.Drawable.llaveiconob, 0, 10f, 10f);
-btnllaves.SetCompoundDrawables()
-var bounds = btnllaves.Left
-left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
-*/
+            //ScaleDrawable sd = new ScaleDrawable(Resource.Drawable.llaveiconob, 0, 10f, 10f);
+            //btnllaves.SetCompoundDrawables()
+            //var bounds = btnllaves.Left
+            //left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
+
 
             //cargar datos en UI
 
@@ -206,34 +197,34 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
                     new System.Threading.Thread(new ThreadStart(delegate
                     {
                         bool solicitudOK = solicitudesWeb.solicitud("Asesor");
-                    //string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
+                        //string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
 
-                    Activity.RunOnUiThread(() =>
-                        {
-                            progressDialog.Hide();
-                        //Console.WriteLine("Solicitud: " + solicitudOK.ToString());
-                        if (solicitudOK)
+                        Activity.RunOnUiThread(() =>
                             {
-                                Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
-                            //Remove fragment else it will crash as it is already added to backstack
-                            Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogContactar1");
-                                if (prev != null)
+                                progressDialog.Hide();
+                                //Console.WriteLine("Solicitud: " + solicitudOK.ToString());
+                                if (solicitudOK)
                                 {
-                                    ft.Remove(prev);
+                                    Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                                    //Remove fragment else it will crash as it is already added to backstack
+                                    Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogContactar1");
+                                    if (prev != null)
+                                    {
+                                        ft.Remove(prev);
+                                    }
+                                    ft.AddToBackStack(null);
+                                    // Create and show the dialog.
+                                    //dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
+                                    dialogOKcontactar newFragmentContactar = dialogOKcontactar.NewInstance(null);
+                                    //Add fragment
+                                    newFragmentContactar.Show(ft, "dialogContactar1");
                                 }
-                                ft.AddToBackStack(null);
-                            // Create and show the dialog.
-                            //dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
-                            dialogOKcontactar newFragmentContactar = dialogOKcontactar.NewInstance(null);
-                            //Add fragment
-                            newFragmentContactar.Show(ft, "dialogContactar1");
-                            }
-                            else
-                            {
-                                Activity.RunOnUiThread(() => Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show());
-                            }
+                                else
+                                {
+                                    Activity.RunOnUiThread(() => Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show());
+                                }
 
-                        });
+                            });
 
                     })).Start();
                 }
@@ -404,7 +395,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
                     if (tmpLlaves < 1)
                     {
                         ///si no tiene llaves, no puede pedir el auto
-                        
+
                         ///COMPRAR EL AUTO
                         /*
                         Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
@@ -521,13 +512,14 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
             })).Start();
 
         }
-        /*
-		public override void OnPause() {
-			base.OnPause();
-			miAuto.SetImageBitmap(null);
 
-		}
-		*/
+        //public override void OnPause()
+        //{
+        //    base.OnPause();
+        //    miAuto.SetImageBitmap(null);
+
+        //}
+
         public bool mostrarImagenAuto()
         {
             bool retorno = true;
@@ -761,11 +753,11 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
                     {
                         if (tmpMisLlaves < 1)
                         {
-                            tvPedirMiAuto.Text = "COMPRAR";
+                            tvPedirMiAuto.Text = "ADQUIRIR PLAN";
                         }
                         else
                         {
-                            tvPedirMiAuto.Text = "Pedir MiAuto";
+                            tvPedirMiAuto.Text = "PAGAR CUOTA";
                         }
                     }
 
