@@ -195,40 +195,48 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
             ///BOTON CONTACTAR/////////////////////////////////////////////////////////////////////
             contactar.Click += (o, s) =>
             {
-                var progressDialog = ProgressDialog.Show(Context, "", "Registrando Pedido...", true);
-                new System.Threading.Thread(new ThreadStart(delegate
+                ///si esta bloqueado, no permite contactar
+                if (dBloqueado.Trim() == "1")
                 {
-                    bool solicitudOK = solicitudesWeb.solicitud("Asesor");
+                    usuarioBloqueado();
+                }
+                else
+                {
+                    var progressDialog = ProgressDialog.Show(Context, "", "Registrando Pedido...", true);
+                    new System.Threading.Thread(new ThreadStart(delegate
+                    {
+                        bool solicitudOK = solicitudesWeb.solicitud("Asesor");
                     //string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
 
                     Activity.RunOnUiThread(() =>
-                    {
-                        progressDialog.Hide();
+                        {
+                            progressDialog.Hide();
                         //Console.WriteLine("Solicitud: " + solicitudOK.ToString());
                         if (solicitudOK)
-                        {
-                            Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                            {
+                                Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
                             //Remove fragment else it will crash as it is already added to backstack
                             Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogContactar1");
-                            if (prev != null)
-                            {
-                                ft.Remove(prev);
-                            }
-                            ft.AddToBackStack(null);
+                                if (prev != null)
+                                {
+                                    ft.Remove(prev);
+                                }
+                                ft.AddToBackStack(null);
                             // Create and show the dialog.
                             //dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
                             dialogOKcontactar newFragmentContactar = dialogOKcontactar.NewInstance(null);
                             //Add fragment
                             newFragmentContactar.Show(ft, "dialogContactar1");
-                        }
-                        else
-                        {
-                            Activity.RunOnUiThread(() => Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show());
-                        }
+                            }
+                            else
+                            {
+                                Activity.RunOnUiThread(() => Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show());
+                            }
 
-                    });
+                        });
 
-                })).Start();
+                    })).Start();
+                }
 
             };
             ///CLICK EN REGISTRADOSSSSS
@@ -388,19 +396,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
                 ///si esta bloqueado, no permite pedir ni comprar un auto
                 if (dBloqueado.Trim() == "1")
                 {
-                    Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
-                    //Remove fragment else it will crash as it is already added to backstack
-                    Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
-                    if (prev != null)
-                    {
-                        ft.Remove(prev);
-                    }
-                    ft.AddToBackStack(null);
-                    // Create and show the dialog.
-                    //dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
-                    dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
-                    //Add fragment
-                    newFragmentContactar.Show(ft, "dialogConsulta");
+                    usuarioBloqueado();
                 }
                 else
                 {
@@ -951,6 +947,22 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
 
             //})).Start();
             return retorno;
+        }
+        public void usuarioBloqueado()
+        {
+            Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+            //Remove fragment else it will crash as it is already added to backstack
+            Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
+            if (prev != null)
+            {
+                ft.Remove(prev);
+            }
+            ft.AddToBackStack(null);
+            // Create and show the dialog.
+            //dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
+            dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
+            //Add fragment
+            newFragmentContactar.Show(ft, "dialogConsulta");
         }
     }
 

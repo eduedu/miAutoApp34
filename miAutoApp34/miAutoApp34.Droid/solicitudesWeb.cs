@@ -241,7 +241,7 @@ namespace miAutoApp34.Droid {
 				HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 				using (StreamReader reader = new StreamReader(response.GetResponseStream())) {
 					retorno = reader.ReadToEnd().ToString();
-					Console.Out.WriteLine("-----TODO OK CON EL SCRIPT? " + retorno.ToString());
+					//Console.Out.WriteLine("-----TODO OK CON EL SCRIPT? " + retorno.ToString());
 
 					return retorno;
 				}

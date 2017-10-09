@@ -51,8 +51,9 @@ namespace miAutoApp34.Droid {
 			dUrlCompartirImagen = misDatos.GetString("urlCompartirImagen", "");
 			dUrlCompartirMensaje = misDatos.GetString("urlCompartirMensaje", "");
 
-			///////FACEBOOOK
-			if (FacebookSdk.IsInitialized == false) {
+
+            ///////FACEBOOOK
+            if (FacebookSdk.IsInitialized == false) {
 				FacebookSdk.SdkInitialize(Activity.ApplicationContext);
 			}
 			mCallBackManager = CallbackManagerFactory.Create();
@@ -63,17 +64,18 @@ namespace miAutoApp34.Droid {
 			messageDialog.RegisterCallback(mCallBackManager, this);
 			linkContent = new ShareLinkContent.Builder()
 					//.SetContentTitle("TITULO")
-					.SetContentTitle(dUrlCompartirTitulo)
 					//.SetContentDescription("Descargá la App Oficial de MiAutoPlan")
-					.SetContentDescription(dUrlCompartirTexto)
 					//.SetContentUrl(Android.Net.Uri.Parse("http://www.autocero.com/"))
-					.SetContentUrl(Android.Net.Uri.Parse(dUrlCompartir))
-					.JavaCast<ShareLinkContent.Builder>()
 					//.SetImageUrl(Android.Net.Uri.Parse("https://scontent-gru2-1.xx.fbcdn.net/t39.2081-0/p128x128/13655700_524964187704825_685694938_n.png"))
 					//.SetImageUrl(Android.Net.Uri.Parse("http://www.muypymes.com/wp-content/uploads/2016/05/google.jpg"))
-					.SetImageUrl(Android.Net.Uri.Parse(dUrlCompartirImagen))
+					.SetContentTitle(dUrlCompartirTitulo)
+					.SetContentDescription(dUrlCompartirTexto)
 
+					.SetContentUrl(Android.Net.Uri.Parse(dUrlCompartir))
 					.JavaCast<ShareLinkContent.Builder>()
+					.SetImageUrl(Android.Net.Uri.Parse(dUrlCompartirImagen))
+					.JavaCast<ShareLinkContent.Builder>()
+
 					.Build();
 
 		}
@@ -104,9 +106,12 @@ namespace miAutoApp34.Droid {
 
 			/////////////////////BTNFACEBOOK COMPARTIR////////////////////////////////////////////////////////
 			btnFBCompartir.Click += (o, e) => {
-				//Toast.MakeText(this.Context, "COMPARTIR", ToastLength.Long).Show();
-				//messageDialog.Show(linkContent);
-				shareDialog.Show(linkContent);
+                //Toast.MakeText(this.Context, "COMPARTIR", ToastLength.Long).Show();
+                //messageDialog.Show(linkContent);
+                //Console.WriteLine("TITULO:" + dUrlCompartirTitulo);
+                //Console.WriteLine("TEXTO:" + dUrlCompartirTexto);
+
+                shareDialog.Show(linkContent);
 			};
 
 			/////////////////////BTNFACEBOOK MENSAJE/////////////////
