@@ -196,7 +196,7 @@ namespace miAutoApp34.Droid
             /// BOTON AGREGAR
             btnAgregar.Click += (o, s) =>
             {
-                ///si esta bloqueado, no permite contactar
+                ///si esta bloqueado, no permite agregar referido
                 if (dBloqueado.Trim() == "1")
                 {
                     usuarioBloqueado();

@@ -176,8 +176,10 @@ namespace miAutoApp34.Droid {
 				if (miVersion.Trim() != nuevaVersion.Trim()) {
 
 					//market://details?id=com.gmail.educontratodos.miautoplan1
-					string appPackageName = "com.gmail.educontratodos.miautoplan1";
-					try {
+					//string appPackageName = "com.gmail.educontratodos.miautoplan1";
+                    string appPackageName = "com.gmail.ecabreradev.miautoplan";
+
+                    try {
 						StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("market://details?id=" + appPackageName)));
 					}
 					catch (Exception ex) {
@@ -194,7 +196,7 @@ namespace miAutoApp34.Droid {
 
 			//CLICK EN ELEMENTOS DE LA LISTA
 			mListView.ItemClick += (o, e) => {
-				Console.WriteLine("CLICK EN LISTA. Posicion:" + e.Position.ToString());
+				//Console.WriteLine("CLICK EN LISTA. Posicion:" + e.Position.ToString());
 
 				//var item = this.adapter.GetItem(e.Position).ToString();
 

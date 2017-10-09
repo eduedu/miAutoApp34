@@ -404,6 +404,7 @@ left.SetBounds(bounds.Left, bounds.Top, bounds.Right, bounds.Bottom - 70);
                     if (tmpLlaves < 1)
                     {
                         ///si no tiene llaves, no puede pedir el auto
+                        
                         ///COMPRAR EL AUTO
                         /*
                         Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
