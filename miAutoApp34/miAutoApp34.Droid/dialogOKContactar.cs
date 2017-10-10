@@ -31,7 +31,7 @@ namespace miAutoApp34.Droid {
 			//titulo = "Solicitud registrada";
 			ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
 			txtNumero= misDatos.GetString("numeroWA", "");
-			mensaje = "Un asesor se comunicará con usted en las próximas horas.\n\n" +
+			mensaje = "Un asesor se comunicará con usted a la brevedad.\n\n" +
 				"O si lo desea, puede llamar o mandar un mensaje de WhatsApp al siguiente número:";
 			//txtNumero = _txtNumero;
 			fragment.Arguments = bundle;

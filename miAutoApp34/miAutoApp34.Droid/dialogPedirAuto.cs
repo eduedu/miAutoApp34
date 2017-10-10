@@ -14,141 +14,201 @@ using Android.Util;
 using Android.Graphics;
 using System.Threading;
 
-namespace miAutoApp34.Droid {
-	public class dialogPedirAuto : DialogFragment {
-		//private static string titulo;
-		//private static string mensaje;
-		private static string requeremientos;
-		private static string modalidad;
-		//public int valorRespuesta;
+namespace miAutoApp34.Droid
+{
+    public class dialogPedirAuto : DialogFragment
+    {
+        //private static string titulo;
+        //private static string mensaje;
+        private static string requeremientos;
+        private static string modalidad;
+        //public int valorRespuesta;
 
 
-		//public string mensaje;
-		public static dialogPedirAuto NewInstance(Bundle bundle, string _requeremientos, string _modalidad = "") {
-			dialogPedirAuto fragment = new dialogPedirAuto();
-			//mensaje = _mensaje;
-			//titulo = _titulo;
-			requeremientos = _requeremientos;
-			modalidad = _modalidad;
-			fragment.Arguments = bundle;
-			//string mensaje=_mensaje;
-			return fragment;
-		}
+        //public string mensaje;
+        public static dialogPedirAuto NewInstance(Bundle bundle, string _requeremientos, string _modalidad = "")
+        {
+            dialogPedirAuto fragment = new dialogPedirAuto();
+            //mensaje = _mensaje;
+            //titulo = _titulo;
+            requeremientos = _requeremientos;
+            modalidad = _modalidad;
+            fragment.Arguments = bundle;
+            //string mensaje=_mensaje;
+            return fragment;
+        }
 
-		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			// Use this to return your custom view for this Fragment
-			View view = inflater.Inflate(Resource.Layout.dialogPedirAuto, container, false);
-			//RequestWindowFeature(WindowFeatures.NoTitle);
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            // Use this to return your custom view for this Fragment
+            View view = inflater.Inflate(Resource.Layout.dialogPedirAuto, container, false);
+            //RequestWindowFeature(WindowFeatures.NoTitle);
 
 
-			///REFERENCIAS A CONTROLES
-			Button btnOK = view.FindViewById<Button>(Resource.Id.btnOK);
-			Button btnCancelar = view.FindViewById<Button>(Resource.Id.btnCancelar);
+            ///REFERENCIAS A CONTROLES
+            Button btnOK = view.FindViewById<Button>(Resource.Id.btnOK);
+            Button btnCancelar = view.FindViewById<Button>(Resource.Id.btnCancelar);
+            ImageButton btnCerrar = view.FindViewById<ImageButton>(Resource.Id.btnCerrar);
 
-			TextView texto1 = view.FindViewById<TextView>(Resource.Id.textView1);
-			TextView texto2 = view.FindViewById<TextView>(Resource.Id.textView2);
-			texto2.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
-			//texto1.Text = titulo;
-			if (modalidad == "") {
-				texto1.Text = "Requerimientos";
-			}
-			if (modalidad == "AcercaDe") {
-				texto1.Text = "Sobre MiAuto Plan";
-				btnOK.Visibility = ViewStates.Gone;
-				btnCancelar.Text = "Ok";
-			}
-			if (modalidad == "Comprar") {
-				texto1.Text = "Comprar Plan";
-				//btnOK.Visibility = ViewStates.Gone;
-				//btnCancelar.Text = "Continuar";
-			}
+            TextView texto1 = view.FindViewById<TextView>(Resource.Id.textView1);
+            TextView texto2 = view.FindViewById<TextView>(Resource.Id.textView2);
+            texto2.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
 
-			texto2.Text = requeremientos;
-			
+            LinearLayout imagenMP = view.FindViewById<LinearLayout>(Resource.Id.linearImagen);
+            //texto1.Text = titulo;
+            imagenMP.Visibility = ViewStates.Gone;
+            texto2.Text = requeremientos;
+            if (modalidad == "")
+            {
+                texto1.Text = "Requisitos";
+                btnCancelar.Visibility = ViewStates.Gone;
+            }
+            if (modalidad == "AcercaDe")
+            {
+                ISharedPreferences misDatos = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                string miVersionName = misDatos.GetString("miVersionName", "");
 
-			//FUENTES
-			Typeface tf = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-BOLD.TTF");
-			Typeface tf2 = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-REGULAR.TTF");
-			Typeface tf3 = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-BLACK.TTF");
+                texto1.Text = "MiAutoPlan (v. " + miVersionName +")";
+                btnOK.Visibility = ViewStates.Gone;
+                btnCancelar.Text = "Ok";
+                //texto2.Text = "MiAutoPlan Version " + nroVersion + "\n" + requeremientos;
+            }
+            if (modalidad == "Comprar")
+            {
+                texto1.Text = "Comprar Plan";
+                //btnOK.Visibility = ViewStates.Gone;
+                //btnCancelar.Text = "Continuar";
+            }
 
-			texto1.Typeface = tf;
-			texto2.Typeface = tf2;
-			btnOK.Typeface = tf2;
-			btnCancelar.Typeface = tf2;
+            ///PAGAR /parametros MercadoPago
+            string LinkMP = "";
+            if (modalidad == "Pagar")
+            {
+                string[] parametroMP;
+                parametroMP = requeremientos.Split('[');
+                texto2.Text = parametroMP[0];
+                LinkMP = parametroMP[1];
 
-			//ajustar tamaño
-			var metrics = inflater.Context.Resources.DisplayMetrics;
-			int tmpAncho = metrics.WidthPixels;
-			int tmpAlto = metrics.HeightPixels;
-			if (tmpAncho > 700) {
-				//texto2.SetMaxLines(10);
+                texto1.Text = "Pago de cuota";
+                btnCancelar.Visibility = ViewStates.Gone;
+                imagenMP.Visibility = ViewStates.Visible;
+            }
 
-				texto2.TextSize = tmpAncho / 40;
-				//texto2.SetLines(15);
-				texto2.LayoutParameters.Width = (int)(tmpAncho * 0.8);
-				texto2.LayoutParameters.Height = (int)(tmpAlto * 0.55);
-				//texto2.SetTextSize(TypedValue.ComplexToDimension., 35);
-			}
-			Console.WriteLine("Ancho:" + metrics.WidthPixels.ToString());
-			Console.WriteLine("Fuente:" + texto2.TextSize.ToString());
 
-			///FUNCIONES BOTONES
-			btnCancelar.Click += delegate {
-				Dismiss();
-			};
-			btnOK.Click += delegate {
-				var progressDialog = ProgressDialog.Show(inflater.Context, "", "Procesando Solicitud...", true);
-				new System.Threading.Thread(new ThreadStart(delegate {
-					string tmpAsunto="";
-					if (modalidad == "") {
-						tmpAsunto = "Pedir Auto";
-					}
-					if (modalidad == "Comprar") {
-						tmpAsunto = "COMPRAR";
-					}
 
-					bool solicitudOK = solicitudesWeb.solicitud(tmpAsunto, false, "miauto_titulo");
-					//string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
-					//Console.WriteLine("Solicituddddddd: " + solicitudOK.ToString());
-					//Console.WriteLine("0");
+            //FUENTES
+            Typeface tf = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-BOLD.TTF");
+            Typeface tf2 = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-REGULAR.TTF");
+            Typeface tf3 = Typeface.CreateFromAsset(Activity.Assets, "fonts/ROBOTO-BLACK.TTF");
 
-					this.Activity.RunOnUiThread(() => {
-						//Console.WriteLine("1");
-						progressDialog.Hide();
-						//Console.WriteLine("2");
-						//Console.WriteLine("Solicitud: " + solicitudOK.ToString());
-						if (solicitudOK) {
-							Dismiss();
-							Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
-							//Remove fragment else it will crash as it is already added to backstack
-							Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogOK100");
-							if (prev != null) {
-								ft.Remove(prev);
-							}
-							ft.AddToBackStack(null);
-							// Create and show the dialog.
-							//dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
-							dialogOKclass newFragmentContactar = dialogOKclass.NewInstance(null, "Solicitud Registrada", "Un asesor se comunicará con Usted a la brevedad. \n\n¡Muchas Gracias!");
-							//Add fragment
-							newFragmentContactar.Show(ft, "dialogOK100");
+            texto1.Typeface = tf;
+            texto2.Typeface = tf2;
+            btnOK.Typeface = tf2;
+            btnCancelar.Typeface = tf2;
 
-						}
-						else {
-							Activity.RunOnUiThread(() => {
-								Dismiss();
-								Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show();
+            //ajustar tamaño
+            var metrics = inflater.Context.Resources.DisplayMetrics;
+            int tmpAncho = metrics.WidthPixels;
+            int tmpAlto = metrics.HeightPixels;
+            if (tmpAncho > 700)
+            {
+                //texto2.SetMaxLines(10);
 
-							});
-						}
-					});
-				})).Start();
-			};
-			return view;
-		}
-		public override void OnActivityCreated(Bundle savedInstanceState) {
-			Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
-			base.OnActivityCreated(savedInstanceState);
-			Dialog.Window.Attributes.WindowAnimations = Resource.Style.animacionesDialog;
-		}
-	}
+                //texto2.TextSize = tmpAncho / 40;
+                //texto2.SetLines(15);
+                texto2.LayoutParameters.Width = (int)(tmpAncho * 0.8);
+                //texto2.LayoutParameters.Height = (int)(tmpAlto * 0.65);
+                texto2.SetMaxHeight((int)(tmpAlto * 0.65));
+
+                //texto2.SetTextSize(TypedValue.ComplexToDimension., 35);
+            }
+            //Console.WriteLine("Ancho:" + metrics.WidthPixels.ToString());
+            //Console.WriteLine("Fuente:" + texto2.TextSize.ToString());
+
+            ///FUNCIONES BOTONES
+            btnCancelar.Click += delegate
+            {
+                Dismiss();
+            };
+            btnCerrar.Click += delegate
+            {
+                Dismiss();
+            };
+            btnOK.Click += delegate
+            {
+                if (modalidad == "Pagar")
+                {
+                    //Toast.MakeText(inflater.Context, LinkMP, ToastLength.Long).Show();
+                    var uri = Android.Net.Uri.Parse(LinkMP);
+                    var intent = new Intent(Intent.ActionView, uri);
+                    StartActivity(intent);
+                    Dismiss();
+                }
+                else
+                {
+
+                    var progressDialog = ProgressDialog.Show(inflater.Context, "", "Procesando Solicitud...", true);
+                    new System.Threading.Thread(new ThreadStart(delegate
+                    {
+                        string tmpAsunto = "";
+                        if (modalidad == "")
+                        {
+                            tmpAsunto = "Pedir Auto";
+                        }
+                        if (modalidad == "Comprar")
+                        {
+                            tmpAsunto = "COMPRAR";
+                        }
+
+                        bool solicitudOK = solicitudesWeb.solicitud(tmpAsunto, false, "miauto_titulo");
+                        //string tmpNumeroWA = solicitudesWeb.getVariable("numeroWA");
+                        //Console.WriteLine("Solicituddddddd: " + solicitudOK.ToString());
+                        //Console.WriteLine("0");
+
+                        this.Activity.RunOnUiThread(() =>
+                            {
+                            //Console.WriteLine("1");
+                            progressDialog.Hide();
+                            //Console.WriteLine("2");
+                            //Console.WriteLine("Solicitud: " + solicitudOK.ToString());
+                            if (solicitudOK)
+                                {
+                                    Dismiss();
+                                    Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                                //Remove fragment else it will crash as it is already added to backstack
+                                Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogOK100");
+                                    if (prev != null)
+                                    {
+                                        ft.Remove(prev);
+                                    }
+                                    ft.AddToBackStack(null);
+                                // Create and show the dialog.
+                                //dialogOKclass newFragment = dialogOKclass.NewInstance(null, "Solicitud registrada", "Un asesor se comunicará con usted en las próximas horas.");
+                                dialogOKclass newFragmentContactar = dialogOKclass.NewInstance(null, "Solicitud Registrada", "Un asesor se comunicará con Usted a la brevedad. \n\n¡Muchas Gracias!");
+                                //Add fragment
+                                newFragmentContactar.Show(ft, "dialogOK100");
+
+                                }
+                                else
+                                {
+                                    Activity.RunOnUiThread(() =>
+                                    {
+                                        Dismiss();
+                                        Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show();
+
+                                    });
+                                }
+                            });
+                    })).Start();
+                }
+            };
+            return view;
+        }
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
+            base.OnActivityCreated(savedInstanceState);
+            Dialog.Window.Attributes.WindowAnimations = Resource.Style.animacionesDialog;
+        }
+    }
 }

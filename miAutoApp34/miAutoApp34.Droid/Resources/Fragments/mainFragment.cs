@@ -77,10 +77,15 @@ namespace miAutoApp34.Droid {
 			Context context = this.ApplicationContext;
 			//var name = context.PackageManager.GetPackageInfo(context.PackageName, 0).VersionName;
 			var code = context.PackageManager.GetPackageInfo(context.PackageName, 0).VersionCode;
-			//string miVersion = GetString(Resource.String.miVersion);
-			string miVersion = code.ToString().Trim();
+            var codeName = context.PackageManager.GetPackageInfo(context.PackageName, 0).VersionName;
+            //string miVersion = GetString(Resource.String.miVersion);
+            string miVersion = code.ToString().Trim();
 			cargarDatos.PutString("miVersion",miVersion );
-			cargarDatos.Apply();
+
+            string miVersionName = codeName.ToString().Trim();
+            cargarDatos.PutString("miVersionName", miVersionName);
+
+            cargarDatos.Apply();
 
 
 			//si datoconAuto="" es porque recien se creo la cuenta o porque se borraron los datos del usuario 

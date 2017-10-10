@@ -38,15 +38,19 @@ namespace miAutoApp34.Droid
         LinearLayout contactar;
         LinearLayout btnllaves;
         LinearLayout pedirMiAuto;
+        LinearLayout btnPagar;
         ImageView miAuto;
         ImageView lupa;
         TextView twtitulo;
         TextView tvCconseguiLlaves;
         TextView tvSolicitar;
         TextView tvPedirMiAuto;
+        TextView tvPagar;
         TextView twTotalLlavesAuto;
         TextView twTotalReferidos;
         LinearLayout linearRegistrados;
+        LinearLayout linearIz;
+        LinearLayout linearDe;
         string miNumero;
         string dMisLlaves;
         string dIntransferibles;
@@ -107,16 +111,21 @@ namespace miAutoApp34.Droid
             btnllaves = view.FindViewById<LinearLayout>(Resource.Id.btnllaves);
             //Button consulta = view.FindViewById<Button>(Resource.Id.consulta);
             pedirMiAuto = view.FindViewById<LinearLayout>(Resource.Id.pedirMiAuto);
+            btnPagar= view.FindViewById<LinearLayout>(Resource.Id.btnPagar);
             miAuto = view.FindViewById<ImageView>(Resource.Id.imAuto);
             lupa = view.FindViewById<ImageView>(Resource.Id.imlupa);
             twtitulo = view.FindViewById<TextView>(Resource.Id.twtitulo);
-            //LinearLayout linear1 = view.FindViewById<LinearLayout>(Resource.Id.linearLayout2);
+
+            linearIz = view.FindViewById<LinearLayout>(Resource.Id.linearIz);
+            linearDe = view.FindViewById<LinearLayout>(Resource.Id.linearDe);
+
             imageCanvas = view.FindViewById<ImageView>(Resource.Id.imageCanvas);
             //imageCanvas2 = view.FindViewById<ImageView>(Resource.Id.imageCanvas2);
             //btnllaves.Typeface = fntRegular;
             tvCconseguiLlaves = view.FindViewById<TextView>(Resource.Id.tvConseguiLlaves);
             tvSolicitar = view.FindViewById<TextView>(Resource.Id.tvSolicitar);
             tvPedirMiAuto = view.FindViewById<TextView>(Resource.Id.tvPedirMiAuto);
+            tvPagar = view.FindViewById<TextView>(Resource.Id.tvPagar);
             twTotalLlavesAuto = view.FindViewById<TextView>(Resource.Id.twTotalLlaves);
             linearRegistrados = view.FindViewById<LinearLayout>(Resource.Id.linearRegistrados);
             twTotalReferidos = view.FindViewById<TextView>(Resource.Id.twTotalReferidos);
@@ -145,6 +154,7 @@ namespace miAutoApp34.Droid
             tvCconseguiLlaves.Typeface = fntCondensedBold;
             tvSolicitar.Typeface = fntCondensedBold;
             tvPedirMiAuto.Typeface = fntCondensedBold;
+            tvPagar.Typeface = fntCondensedBold;
             twValorLlave.Typeface = fntCondensedBold;
             //text1b.Typeface = fntCondensedBold;
             twVencimiento.Typeface = fntCondensedBold;
@@ -392,71 +402,118 @@ namespace miAutoApp34.Droid
                 else
                 {
                     ///si no esta bloqueado, se puede pedir o comprar el auto
-                    if (tmpLlaves < 1)
-                    {
-                        ///si no tiene llaves, no puede pedir el auto
+                    //if (tmpLlaves < 1)
+                    //{
+                    //    ///si no tiene llaves, no puede pedir el auto
 
-                        ///COMPRAR EL AUTO
-                        /*
-                        Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
-                        //Remove fragment else it will crash as it is already added to backstack
-                        Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("sinLlaves");
-                        if (prev != null) {
-                            ft.Remove(prev);
-                        }
-                        ft.AddToBackStack(null);
-                        // Create and show the dialog.
-                        //string tmpMensaje="Llaves Transferibles: "+dMisLlaves+"\nLlaves Intransferibles: "+dIntransferibles+"\n\nTotal: "+dTotalLlaves;
-                        dialogOKclass newFragmentMisLlaves = dialogOKclass.NewInstance(null, "Sin llaves", "Su cuenta no registra ninguna Llave (cuota) hasta el momento. \nNecesita tener al menos 1 (una) Llave para poder realizar esta operación.");
-                        //dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
-                        //Add fragment
-                        newFragmentMisLlaves.Show(ft, "sinLlaves");
-                        */
+                    //    ///COMPRAR EL AUTO
+                    //    /*
+                    //    Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                    //    //Remove fragment else it will crash as it is already added to backstack
+                    //    Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("sinLlaves");
+                    //    if (prev != null) {
+                    //        ft.Remove(prev);
+                    //    }
+                    //    ft.AddToBackStack(null);
+                    //    // Create and show the dialog.
+                    //    //string tmpMensaje="Llaves Transferibles: "+dMisLlaves+"\nLlaves Intransferibles: "+dIntransferibles+"\n\nTotal: "+dTotalLlaves;
+                    //    dialogOKclass newFragmentMisLlaves = dialogOKclass.NewInstance(null, "Sin llaves", "Su cuenta no registra ninguna Llave (cuota) hasta el momento. \nNecesita tener al menos 1 (una) Llave para poder realizar esta operación.");
+                    //    //dialogConsulta newFragmentContactar = dialogConsulta.NewInstance(null, "Consulta", "Mensaje para MiAutoPlan:");
+                    //    //Add fragment
+                    //    newFragmentMisLlaves.Show(ft, "sinLlaves");
+                    //    */
 
-                        Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
-                        Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
-                        if (prev != null)
-                        {
-                            ft.Remove(prev);
-                        }
-                        ft.AddToBackStack(null);
-                        string tmpTexto = "Presione CONTINUAR y un asesor lo llamará a la brevedad para iniciar el trámite.";
-                        dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, tmpTexto, "Comprar");
-                        newFragmentContactar.Show(ft, "dialogConsulta");
-                    }
-                    else
+                    //    Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                    //    Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
+                    //    if (prev != null)
+                    //    {
+                    //        ft.Remove(prev);
+                    //    }
+                    //    ft.AddToBackStack(null);
+                    //    string tmpTexto = "Presione CONTINUAR y un asesor lo llamará a la brevedad para iniciar el trámite.";
+                    //    dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, tmpTexto, "Comprar");
+                    //    newFragmentContactar.Show(ft, "dialogConsulta");
+                    //}
+                    //else
+                    //{
+                    var progressDialog = ProgressDialog.Show(inflater.Context, "", "Cargando...", true);
+                    new System.Threading.Thread(new ThreadStart(delegate
                     {
-                        var progressDialog = ProgressDialog.Show(inflater.Context, "", "Cargando...", true);
-                        new System.Threading.Thread(new ThreadStart(delegate
+                        string requeremientos = solicitudesWeb.getVariable("Requerimientos");
+                        this.Activity.RunOnUiThread(() =>
                         {
-                            string requeremientos = solicitudesWeb.getVariable("Requerimientos");
-                            this.Activity.RunOnUiThread(() =>
+                            progressDialog.Hide();
+                            if (requeremientos != "SinConexion")
                             {
-                                progressDialog.Hide();
-                                if (requeremientos != "SinConexion")
+                                //Dismiss();
+                                Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                                Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
+                                if (prev != null)
+                                {
+                                    ft.Remove(prev);
+                                }
+                                ft.AddToBackStack(null);
+                                dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, requeremientos);
+                                newFragmentContactar.Show(ft, "dialogConsulta");
+                            }
+                            else
+                            {
+                                Activity.RunOnUiThread(() =>
                                 {
                                     //Dismiss();
-                                    Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
-                                    Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
-                                    if (prev != null)
-                                    {
-                                        ft.Remove(prev);
-                                    }
-                                    ft.AddToBackStack(null);
-                                    dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, requeremientos);
-                                    newFragmentContactar.Show(ft, "dialogConsulta");
-                                }
-                                else
+                                    Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show();
+                                });
+                            }
+                        });
+                    })).Start();
+                    //}
+                }
+            };
+
+            ///BOTON PAGAR
+            btnPagar.Click += (o, s) =>
+            {
+
+                ///si esta bloqueado, no permite pagar
+                if (dBloqueado.Trim() == "1")
+                {
+                    usuarioBloqueado();
+                }
+                else
+                {
+                    ///si no esta bloqueado, se puede pedir o comprar el auto
+                    var progressDialog = ProgressDialog.Show(inflater.Context, "", "Cargando...", true);
+                    new System.Threading.Thread(new ThreadStart(delegate
+                    {
+                        string parametrosMP = solicitudesWeb.getVariable("mercadoPago");
+                        this.Activity.RunOnUiThread(() =>
+                        {
+                            progressDialog.Hide();
+                            if (parametrosMP != "SinConexion")
+                            {
+                                ///fragment
+                                //Dismiss();
+                                Android.App.FragmentTransaction ft = Activity.FragmentManager.BeginTransaction();
+                                Android.App.Fragment prev = Activity.FragmentManager.FindFragmentByTag("dialogConsulta");
+                                if (prev != null)
                                 {
-                                    Activity.RunOnUiThread(() =>
-                                    {
-                                        //Dismiss();
-                                        Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show();
-                                    });
+                                    ft.Remove(prev);
                                 }
-                            });
-                        })).Start();
-                    }
+                                ft.AddToBackStack(null);
+                                dialogPedirAuto newFragmentContactar = dialogPedirAuto.NewInstance(null, parametrosMP, "Pagar");
+                                newFragmentContactar.Show(ft, "dialogConsulta");
+                            }
+                            else
+                            {
+                                Activity.RunOnUiThread(() =>
+                                {
+                                    //Dismiss();
+                                    Toast.MakeText(inflater.Context, "sin conexión", ToastLength.Long).Show();
+                                });
+                            }
+                        });
+                    })).Start();
+                    //}
                 }
             };
 
@@ -586,7 +643,7 @@ namespace miAutoApp34.Droid
 			Console.WriteLine("sumaAltoViews" + sumaAltoViews);
 			Console.WriteLine("HEIGHT" + metrics.HeightPixels);
 			*/
-            miAuto.LayoutParameters.Height = tmpAlto;
+            miAuto.LayoutParameters.Height = (int)((double)tmpAlto * 0.9);
             //Console.WriteLine("tmpAlto:" + tmpAlto);
             //Console.WriteLine("canvas height:" + imageCanvas.LayoutParameters.Height);
             //Console.WriteLine("ALTO-linearLO:" + (metrics.HeightPixels-linear1.Height).ToString());
@@ -753,11 +810,13 @@ namespace miAutoApp34.Droid
                     {
                         if (tmpMisLlaves < 1)
                         {
-                            tvPedirMiAuto.Text = "ADQUIRIR PLAN";
+                            //tvPedirMiAuto.Text = "ADQUIRIR PLAN";
+                            tvPagar.Text = "ADQUIRIR PLAN";
                         }
                         else
                         {
-                            tvPedirMiAuto.Text = "PAGAR CUOTA";
+                            //tvPedirMiAuto.Text = "PAGAR CUOTA";
+                            tvPagar.Text = "PAGAR CUOTA";
                         }
                     }
 
@@ -783,6 +842,10 @@ namespace miAutoApp34.Droid
 
                     //Auto
                     twtitulo.Text = dmiauto_titulo;
+
+                    ///ajustar el layout de la derecha en base al alto del layout de la izquierda
+                    linearDe.LayoutParameters.Height = mAltoBoton * 6;
+                    linearIz.LayoutParameters.Height = mAltoBoton * 6;
 
                 });
 

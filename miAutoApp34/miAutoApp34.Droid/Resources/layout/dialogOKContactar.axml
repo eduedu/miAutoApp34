@@ -24,26 +24,29 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|left"
+        android:gravity="center_horizontal|right"
         android:layout_marginTop="10dp">
         <TextView
             android:text="3794"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textNumeroWA"
             android:layout_marginTop="10dp"
             android:textColor="#FFFFFF"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="right" />
         <LinearLayout
             android:id="@+id/btnCopiarNumero"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="35.0dp"
             android:gravity="center"
             android:layout_marginLeft="5dp"
             android:clickable="true"
             android:paddingRight="5dp"
-            android:background="@color/colGris2">
+            android:background="@color/colGris2"
+            android:layout_weight="1">
             <ImageView
                 android:src="@drawable/iconocopiar"
                 android:layout_width="45.5dp"
@@ -74,7 +77,7 @@
             android:id="@+id/linearWhatsapp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="45.0dp"
+            android:layout_height="40.0dp"
             android:gravity="center"
             android:background="#128C7E"
             android:layout_weight="1"
@@ -100,7 +103,7 @@
         <Button
             android:text="Ok"
             android:layout_width="match_parent"
-            android:layout_height="45.0dp"
+            android:layout_height="40.0dp"
             android:id="@+id/btnOK"
             android:layout_marginTop="10dp"
             android:background="@drawable/btnloginazul"
